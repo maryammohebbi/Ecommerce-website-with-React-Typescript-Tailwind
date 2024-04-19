@@ -6,6 +6,30 @@
 
 
 @layer base {
-    body {
-        font-family: "Dosis", sans-serif;
-    }}
+    :root{
+        &,
+        &.light-mode{
+            --background-app: #fff6fa;
+            --color-primary: #ff5976;
+            --color-secondary: #fddbdb;
+            --color-secondary-text: #040105;
+            --background-secondary: #c5c5c5de;
+            --color-success: #36bc4c;
+            --color-warning: #ec5454;
+            --color-error: #f92c2c;
+            
+        }
+        &.dark-mode{
+            --background-app: #2f1a35;
+            --color-secondary-text: #f1e8f4;
+            --background-secondary: #503657;
+        }
+    }
+}
+
+
+
+body {
+    font-family: "Dosis", sans-serif;
+    background-color: var(--background-app);
+}
