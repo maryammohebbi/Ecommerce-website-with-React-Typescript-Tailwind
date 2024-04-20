@@ -9,20 +9,22 @@
     :root{
         &,
         &.light-mode{
-            --background-app: #fff6fa;
+            --background-app: #fbfbfb;
             --color-primary: #ff5976;
-            --color-secondary: #fddbdb;
-            --color-secondary-text: #040105;
-            --background-secondary: #c5c5c5de;
+            --color-secondary: #d6acac;
+            --color-textColor: #040105;
+            --color-secondaryBg: #c5c5c5de;
             --color-success: #36bc4c;
             --color-warning: #ec5454;
             --color-error: #f92c2c;
             
         }
+        /* &, */
         &.dark-mode{
-            --background-app: #2f1a35;
-            --color-secondary-text: #f1e8f4;
-            --background-secondary: #503657;
+            --background-app: #17091b;
+            --color-textColor: #f1e8f4;
+            --color-secondaryBg: #503657;
+            --color-secondary: #b67171;
         }
     }
 }
