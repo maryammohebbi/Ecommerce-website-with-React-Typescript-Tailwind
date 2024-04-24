@@ -1,13 +1,14 @@
-import Slider from "./features/home/Slider"
-import Menu from "./features/ui/Menu"
+import { Route, Routes } from "react-router-dom"
+import Home from "./features/home/Home"
 
 function App() {
 
   return (
-    <div>
-      <Menu/>
-      <Slider/>
-    </div>
+    <>
+      <Routes>
+        <Route path="/" element={<Home/>}/>
+      </Routes>
+    </>
       
   )
 }
