@@ -1,10 +1,24 @@
-import React from 'react'
+// import React from 'react'
 
-type Props = {}
+import useCategories from "./useCategories"
 
-function CategoryContainer({}: Props) {
+// interface Props {}
+const CategoryContainer= ()=> {
+    const {isCategoriesLoading, categories} = useCategories()
+
+    // if (isCategoriesLoading) return <p> Loading...</p>
+    
+    if (isCategoriesLoading) return <p>Loading...</p>;
+    if (!categories) return <p>No categories available</p>;
+
   return (
-    <div>CategoryContainer</div>
+    <div>
+      {
+        categories.map((category: string) => (
+          <p key={category}>{category}</p>
+        ))
+      }
+    </div>
   )
 }
 

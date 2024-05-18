@@ -1,4 +1,5 @@
 // import React from 'react'
+import CategoryContainer from '../categories/CategoryContainer'
 import Menu from '../ui/Menu'
 import Slider from './Slider'
 
@@ -9,6 +10,7 @@ function Home({}: Props) {
     <div>
         <Menu/>
         <Slider/>
+        <CategoryContainer/>
     </div>
   )
 }
