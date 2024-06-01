@@ -1,10 +1,15 @@
-import React from 'react'
+// import React from 'react'
 
 type Props = {}
 
 function Category({}: Props) {
   return (
-    <div>Category</div>
+    <div>
+      <div className="bg-pink-100 w-[4rem] h-[4rem] rounded-full">
+        <img src="" alt="" />
+        <span></span>
+      </div>
+    </div>
   )
 }
 

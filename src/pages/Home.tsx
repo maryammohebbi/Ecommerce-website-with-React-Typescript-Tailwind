@@ -1,17 +1,17 @@
 // import React from 'react'
-import CategoryContainer from '../categories/CategoryContainer'
-import Menu from '../ui/Menu'
-import Slider from './Slider'
+import CategoryContainer from '../features/categories/CategoryContainer'
+import Menu from '../features/ui/Menu'
+import Slider from '../features/home/Slider'
 
 type Props = {}
 
 function Home({}: Props) {
   return (
-    <div>
+    <>
         <Menu/>
         <Slider/>
         <CategoryContainer/>
-    </div>
+    </>
   )
 }
 
