@@ -2,17 +2,18 @@
 
 import useCategories from "./useCategories"
 import Category from "./Category"
+import Loader from "../ui/Loader"
+import Empty from "../ui/Empty"
 
 
 const CategoryContainer = () => {
   const { isCategoriesLoading, categories } = useCategories()
 
-  if (isCategoriesLoading) return <p>Loading...</p>
-  if (!categories) return <p>No categories available</p>
+  if (isCategoriesLoading) return <Loader/>
+  if (!categories) return <Empty sourceName="category"/>
 
   return (
-    <div className="container p-5 flex flex-col items-center ">
-      <h3 className="text-2xl font-bold mb-8 text-textColor">Product Categories</h3>
+    <div>
       <Category categories={categories}/>
     </div>
   );

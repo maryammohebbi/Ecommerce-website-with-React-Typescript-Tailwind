@@ -1,7 +1,7 @@
 // import React from 'react'
-import CategoryContainer from '../features/categories/CategoryContainer'
 import Menu from '../features/ui/Menu'
 import Slider from '../features/home/Slider'
+import Categories from '../features/home/Categories'
 
 type Props = {}
 
@@ -10,7 +10,7 @@ function Home({}: Props) {
     <>
         <Menu/>
         <Slider/>
-        <CategoryContainer/>
+        <Categories/>
     </>
   )
 }
