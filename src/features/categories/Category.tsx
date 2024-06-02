@@ -50,7 +50,7 @@ function Category({categories}: Categories) {
               className="w-[8rem] h-[8rem] md:w-[15rem] md:h-[15rem] relative flex flex-col items-center"
             >
               {findAndRenderIcon(category)}
-              <span className="font-bold">{category}</span>
+              <span className="font-bold text-textColor">{category}</span>
             </div>
           </Link>
         ))}

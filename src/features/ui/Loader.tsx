@@ -2,9 +2,7 @@
 
 import { LineWave } from "react-loader-spinner"
 
-type Props = {}
-
-function Loader({}: Props) {
+function Loader() {
   return (
     <div className="flex justify-center">
       <LineWave
