@@ -1,10 +1,11 @@
 // import React from 'react'
 
+import { Link } from "react-router-dom"
 import type {Product} from "./useProducts"
 
 function Product({product}: {product: Product}) {
   return (
-    <div>
+    <Link to={`${product.category}/${product.title}`}>
         <div className="w-full h-[25rem] bg-secondaryBg rounded-lg p-3">
             <div className="w-[90%] h-[80%] p-2 bg-white container mx-auto rounded-lg mb-1">
                 <img 
@@ -21,7 +22,7 @@ function Product({product}: {product: Product}) {
                 <span className="text-lg font-bold text-red-400">{product.price} $</span>
             </div>
         </div>
-    </div>
+    </Link>
   )
 }
 
