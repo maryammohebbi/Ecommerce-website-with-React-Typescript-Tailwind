@@ -7,7 +7,7 @@
 
 @layer base {
     :root{
-        &,
+        /* &, */
         &.light-mode{
             --background-app: #fbfbfb;
             --color-primary: #ff5976;
@@ -19,7 +19,7 @@
             --color-error: #f92c2c;
             
         }
-        /* &, */
+        &,
         &.dark-mode{
             --background-app: #17091b;
             --color-textColor: #f1e8f4;
