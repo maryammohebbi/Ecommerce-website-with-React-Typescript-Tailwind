@@ -1,13 +1,15 @@
-// import React from 'react'
+import React from 'react'
 
-interface SourceName{
-    sourceName: string
+interface SourceName {
+  sourceName: string
 }
 
-function Empty({sourceName}: SourceName) {
+const Empty: React.FC<SourceName> = ({ sourceName }) => {
   return (
     <div>
-        <p className="text-xl text-textColor font-bold">There's no {sourceName} ...</p>
+      <p className="text-xl text-textColor font-bold">
+        There's no {sourceName} ...
+      </p>
     </div>
   )
 }

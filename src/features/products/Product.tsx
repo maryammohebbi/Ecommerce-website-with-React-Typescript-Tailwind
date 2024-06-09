@@ -1,9 +1,8 @@
-// import React from 'react'
-
+import React from 'react'
 import { Link } from 'react-router-dom'
 import type { Product } from './useProducts'
 
-function Product({ product }: { product: Product }) {
+const Product: React.FC<{ product: Product }> = ({ product }) => {
   return (
     <Link to={`${product.category}/${product.title}`}>
       <div className="w-full h-[30rem] bg-secondaryBg rounded-lg p-5 shadow-xl hover:scale-[1.01] duration-500 transition-all">

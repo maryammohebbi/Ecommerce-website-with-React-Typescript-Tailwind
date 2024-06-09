@@ -1,13 +1,11 @@
-// import React from 'react'
+import React from 'react'
 
 import Empty from '../ui/Empty'
 import Loader from '../ui/Loader'
 import Product from './Product'
 import useProducts from './useProducts'
 
-type Props = {}
-
-function ProductsContainer({}: Props) {
+const ProductsContainer: React.FC = () => {
   const { isProductsLoading, products } = useProducts()
 
   if (isProductsLoading) return <Loader />

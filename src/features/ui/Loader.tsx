@@ -1,8 +1,8 @@
-// import React from 'react'
+import React from 'react'
 
-import { LineWave } from "react-loader-spinner"
+import { LineWave } from 'react-loader-spinner'
 
-function Loader() {
+const Loader: React.FC = () => {
   return (
     <div className="flex justify-center">
       <LineWave

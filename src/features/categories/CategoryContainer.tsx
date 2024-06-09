@@ -1,4 +1,4 @@
-// import React from 'react';
+import React from 'react';
 
 import useCategories from "./useCategories"
 import Category from "./Category"
@@ -6,7 +6,7 @@ import Loader from "../ui/Loader"
 import Empty from "../ui/Empty"
 
 
-const CategoryContainer = () => {
+const CategoryContainer: React.FC = () => {
   const { isCategoriesLoading, categories } = useCategories()
 
   if (isCategoriesLoading) return <Loader/>
