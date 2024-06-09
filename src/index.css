@@ -1,37 +1,31 @@
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
-
 @layer base {
-    :root{
-        /* &, */
-        &.light-mode{
-            --background-app: #fbfafe;
-            --color-primary: #ff5976;
-            --color-secondary: #6750a4;
-            --color-textColor: #1c1a27;
-            --color-secondaryBg: #625b71;
-            --color-success: #36bc4c;
-            --color-warning: #ec5454;
-            --color-error: #f92c2c;
-            
-        }
-        &,
-        &.dark-mode{
-            --background-app: #1c1a27;
-            --color-textColor: #edebed;
-            --color-secondaryBg: #716781;
-            --color-secondary: #d0bcff;
-        }
+  :root {
+    /* &, */
+    &.light-mode {
+      --background-app: #fbfafe;
+      --color-primary: #ff5976;
+      --color-secondary: #6750a4;
+      --color-textColor: #1c1a27;
+      --color-secondaryBg: #625b71;
+      --color-success: #36bc4c;
+      --color-warning: #ec5454;
+      --color-error: #f92c2c;
     }
+    &,
+    &.dark-mode {
+      --background-app: #1c1a27;
+      --color-textColor: #edebed;
+      --color-secondaryBg: #716781;
+      --color-secondary: #d0bcff;
+    }
+  }
 }
 
-
-
 body {
-    font-family: "Dosis", sans-serif;
-    background-color: var(--background-app);
+  font-family: 'Dosis', sans-serif;
+  background-color: var(--background-app);
 }
