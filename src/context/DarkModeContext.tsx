@@ -1,11 +1,43 @@
-import React from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 
-type Props = {}
+interface DarkModeContextProps {
+  children: React.ReactNode
+}
+interface DarkModeState {
+  isDarkMode: boolean
+  setIsDarkMode: (newIsDarkMode: boolean) => void
+}
 
-const DarkModeContext = (props: Props) => {
+const DarkModeContext = createContext<DarkModeState | null>(null)
+
+export const DarkModeProvider: React.FC<DarkModeContextProps> = ({
+  children,
+}) => {
+  const [isDarkMode, setIsDarkMode] = useState(false)
+
+  useEffect(() => {
+    if (isDarkMode) {
+      document.documentElement.classList.add('dark-mode')
+      document.documentElement.classList.remove('light-mode')
+    } else {
+      document.documentElement.classList.remove('dark-mode')
+      document.documentElement.classList.add('light-mode')
+    }
+  }, [isDarkMode])
+
   return (
-    <div>DarkModeContext</div>
+    <DarkModeContext.Provider value={{ isDarkMode, setIsDarkMode }}>
+      {children}
+    </DarkModeContext.Provider>
   )
 }
 
-export default DarkModeContext
+export function useDarkMode() {
+  const context = useContext(DarkModeContext)
+
+  if (context === null) {
+    throw new Error('useDarkMode must be used within a DarkModeProvider')
+  }
+
+  return context
+}

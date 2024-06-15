@@ -1,15 +1,18 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { GiUbisoftSun } from 'react-icons/gi'
 import { PiMoonStarsLight } from 'react-icons/pi'
+import { useDarkMode } from '../../context/DarkModeContext'
 
-type Props = {}
-
-const DarkModeToggle = (props: Props) => {
-  const [toggle, setToggle] = useState(true)
+const DarkModeToggle: React.FC = () => {
+  const { isDarkMode, setIsDarkMode } = useDarkMode()
   return (
     <div>
-      <button onClick={() => setToggle(!toggle)}>
-        {toggle ? <GiUbisoftSun /> : <PiMoonStarsLight />}
+      <button className="p-1" onClick={() => setIsDarkMode(!isDarkMode)}>
+        {isDarkMode ? (
+          <GiUbisoftSun className="w-8 h-8" />
+        ) : (
+          <PiMoonStarsLight className="w-8 h-8" />
+        )}
       </button>
     </div>
   )

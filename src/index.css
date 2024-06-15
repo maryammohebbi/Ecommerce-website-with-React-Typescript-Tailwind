@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* &, */
+    &,
     &.light-mode {
       --background-app: #fbfafe;
       --color-primary: #ff5976;
@@ -15,7 +15,7 @@
       --color-warning: #ec5454;
       --color-error: #f92c2c;
     }
-    &,
+    /* &, */
     &.dark-mode {
       --background-app: #1c1a27;
       --color-textColor: #edebed;
