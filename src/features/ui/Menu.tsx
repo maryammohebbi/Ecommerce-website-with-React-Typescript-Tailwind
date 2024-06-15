@@ -1,4 +1,5 @@
 import React from 'react'
+import DarkModeToggle from './DarkModeToggle'
 
 type Props = {}
 
@@ -9,7 +10,9 @@ const Menu: React.FC<Props> = ({}) => {
         <div className="text-textColor">cart</div>
         <div>login | signup</div>
         <div>search</div>
-        <div>LOGO</div>
+        <div>
+          <DarkModeToggle />
+        </div>
       </div>
     </div>
   )
