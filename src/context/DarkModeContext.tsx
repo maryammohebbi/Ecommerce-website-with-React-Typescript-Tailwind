@@ -8,7 +8,10 @@ interface DarkModeState {
   setIsDarkMode: (newIsDarkMode: boolean) => void
 }
 
-const DarkModeContext = createContext<DarkModeState | null>(null)
+const DarkModeContext = createContext<DarkModeState>({
+  isDarkMode: false,
+  setIsDarkMode: () => {},
+})
 
 export const DarkModeProvider: React.FC<DarkModeContextProps> = ({
   children,
