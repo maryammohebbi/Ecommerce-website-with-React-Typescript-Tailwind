@@ -50,11 +50,8 @@ const Category: React.FC<Categories> = ({ categories }) => {
   return (
     <div className="grid grid-cols-1 grid-rows-1 md:grid-cols-2 md:grid-rows-2 gap-2 md:gap-x-40 md:h-screen ">
       {categories.map((category) => (
-        <Link to={category}>
-          <div
-            key={category}
-            className="w-[8rem] h-[8rem] md:w-[15rem] md:h-[15rem] relative flex flex-col items-center"
-          >
+        <Link to={category} key={category}>
+          <div className="w-[8rem] h-[8rem] md:w-[15rem] md:h-[15rem] relative flex flex-col items-center">
             {findAndRenderIcon(category)}
             <span className="font-bold text-textColor">{category}</span>
           </div>
