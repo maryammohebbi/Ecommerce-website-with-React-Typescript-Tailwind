@@ -1,5 +1,4 @@
 import React from 'react'
-
 import Empty from '../ui/Empty'
 import Loader from '../ui/Loader'
 import Product from './Product'
