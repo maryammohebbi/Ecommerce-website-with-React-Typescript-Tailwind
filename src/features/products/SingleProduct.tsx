@@ -20,7 +20,7 @@ const SingleProduct: React.FC = () => {
               alt={product.title}
             />
           </div>
-          <div className="lg:w-3/5 lg:h-[36rem] flex flex-col gap-y-20 border-2 border-primary rounded-lg p-5 items-end shadow-2xl">
+          <div className="lg:w-3/5 lg:h-[36rem] flex flex-col gap-y-20 border-2 border-primary rounded-lg p-5 shadow-2xl">
             <div className="flex flex-col gap-y-10">
               <div>
                 <span className="text-textColor text-lg font-bold">
@@ -55,9 +55,11 @@ const SingleProduct: React.FC = () => {
                 </span>
               </div>
             </div>
-            <button className="p-2 bg-emerald-500 rounded-lg w-32">
-              Add To Cart
-            </button>
+            <div className="flex flex-col items-end">
+              <button className="p-2 bg-emerald-500 rounded-lg w-32">
+                Add To Cart
+              </button>
+            </div>
           </div>
         </div>
       </div>
