@@ -56,7 +56,7 @@ const SingleProduct: React.FC = () => {
               </div>
             </div>
             <div className="flex flex-col items-end">
-              <button className="p-2 bg-emerald-500 rounded-lg w-32">
+              <button className="px-3 py-2 bg-emerald-500 rounded-lg w-32 text-textColor text-lg font-semibold shadow-2xl border-2 border-green-900">
                 Add To Cart
               </button>
             </div>
