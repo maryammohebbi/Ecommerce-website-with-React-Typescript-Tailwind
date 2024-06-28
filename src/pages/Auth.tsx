@@ -1,10 +1,10 @@
 import React from 'react'
-import Login from '../authentication/Login'
+import AuthContainer from '../authentication/AuthContainer'
 
 const Auth: React.FC = ({}) => {
   return (
     <div>
-      <Login />
+      <AuthContainer />
     </div>
   )
 }
