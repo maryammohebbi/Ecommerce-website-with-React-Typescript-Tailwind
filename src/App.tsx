@@ -6,7 +6,7 @@ import AppLayout from './features/ui/AppLayout'
 import { DarkModeProvider } from './context/DarkModeContext'
 import SingleProduct from './features/products/SingleProduct'
 import Cart from './features/cart/Cart'
-import Login from './authentication/Login'
+import Auth from './pages/Auth'
 
 const queryClient = new QueryClient()
 
@@ -21,7 +21,7 @@ function App() {
             <Route path="products/:id" element={<SingleProduct />} />
             {/* <Route path="products/:category" element={<Products />} /> */}
             <Route path="checkout/cart" element={<Cart />} />
-            <Route path="/auth" element={<Login />} />
+            <Route path="/auth" element={<Auth />} />
           </Routes>
         </AppLayout>
       </QueryClientProvider>
