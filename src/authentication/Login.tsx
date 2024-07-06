@@ -3,8 +3,9 @@ import InputField from '../features/ui/InputField'
 import { useForm } from 'react-hook-form'
 
 type Inputs = {
-  name: string
+  email: string
   password: string
+  required?: boolean
 }
 
 const Login: React.FC = ({}) => {
@@ -19,7 +20,7 @@ const Login: React.FC = ({}) => {
         className="flex flex-col gap-y-8"
       >
         <InputField
-          name="userName"
+          name="email"
           register={register}
           required
           type="text"
