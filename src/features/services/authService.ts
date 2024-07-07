@@ -1,10 +1,11 @@
 import { AxiosResponse } from "axios";
 import http from "./httpService";
 
-// export function getUser(data: object): Promise<AxiosResponse> {
-//     return http.get("/users", data)
-// }
+interface LoginDataTypes {
+    email: string
+    password: string
+}
 
-export function getLoginInfo(): Promise<AxiosResponse> {
-    return http.post("/users")
+export function getLoginInfo(data: LoginDataTypes): Promise<AxiosResponse> {
+    return http.post("/auth/login", data)
 }

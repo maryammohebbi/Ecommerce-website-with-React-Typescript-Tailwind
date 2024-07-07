@@ -1,6 +1,9 @@
 import React from 'react'
 import InputField from '../features/ui/InputField'
 import { useForm } from 'react-hook-form'
+import { useMutation } from '@tanstack/react-query'
+import { getLoginInfo } from '../features/services/authService'
+import toast from 'react-hot-toast'
 
 type Inputs = {
   email: string
@@ -11,12 +14,23 @@ type Inputs = {
 const Login: React.FC = ({}) => {
   const { register, handleSubmit } = useForm<Inputs>()
 
-  const loginReqHandler = () => {}
+  const { isPending, mutateAsync } = useMutation({
+    mutationFn: getLoginInfo,
+  })
+
+  const loginHandler = async (data: Inputs) => {
+    try {
+      await mutateAsync(data)
+      toast.success('Welcome!')
+    } catch (error) {
+      toast.error('Your login failed.')
+    }
+  }
 
   return (
     <div className="">
       <form
-        onSubmit={handleSubmit(loginReqHandler)}
+        onSubmit={handleSubmit(loginHandler)}
         className="flex flex-col gap-y-8"
       >
         <InputField
@@ -34,7 +48,7 @@ const Login: React.FC = ({}) => {
           placeholder="PASSWORD"
         />
         <button className="p-2 bg-green-300 rounded-lg text-lg font-semibold">
-          Login
+          {isPending ? 'Logining...' : 'Login'}
         </button>
       </form>
     </div>
