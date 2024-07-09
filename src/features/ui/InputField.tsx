@@ -6,7 +6,13 @@ interface InputProps {
   name: string
   register: UseFormRegister<any>
   required?: boolean
-  validationSchema: { required: string }
+  validationSchema: {
+    required: string
+    minLength?: {
+      value: number
+      message: string
+    }
+  }
   errors: any
 }
 const InputField: React.FC<InputProps> = ({
@@ -29,7 +35,7 @@ const InputField: React.FC<InputProps> = ({
         type={type}
       />
       {errors && errors[name] && (
-        <span className="text-error block text-sm mt-1">
+        <span className="text-red-400 block text-lg mt-1">
           {errors[name]?.message}
         </span>
       )}
