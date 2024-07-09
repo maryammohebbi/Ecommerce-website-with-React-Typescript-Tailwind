@@ -4,24 +4,32 @@ import { useForm } from 'react-hook-form'
 import { useMutation } from '@tanstack/react-query'
 import { getLoginInfo } from '../features/services/authService'
 import toast from 'react-hot-toast'
+import { useNavigate } from 'react-router-dom'
 
 type Inputs = {
-  email: string
+  userName: string
   password: string
-  required?: boolean
 }
 
 const Login: React.FC = ({}) => {
-  const { register, handleSubmit } = useForm<Inputs>()
+  const navigate = useNavigate()
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<Inputs>()
 
   const { isPending, mutateAsync } = useMutation({
     mutationFn: getLoginInfo,
   })
 
-  const loginHandler = async (data: Inputs) => {
+  const loginHandler = async ({ userName, password }: Inputs) => {
     try {
-      await mutateAsync(data)
+      await mutateAsync({ userName, password })
       toast.success('Welcome!')
+      navigate('/')
+      console.log(`welcome ${userName}`)
     } catch (error) {
       toast.error('Your login failed.')
     }
@@ -34,21 +42,29 @@ const Login: React.FC = ({}) => {
         className="flex flex-col gap-y-8"
       >
         <InputField
-          name="email"
+          name="userName"
           register={register}
-          required
+          errors={errors}
           type="text"
-          placeholder="YOUR EMAIL OR USERNAME"
+          label="YOUR USERNAME"
+          validationSchema={{
+            required: 'Email is necessary',
+          }}
+          required
         />
         <InputField
           name="password"
           register={register}
-          required
           type="password"
-          placeholder="PASSWORD"
+          label="YOUR PASSWORD"
+          errors={errors}
+          validationSchema={{
+            required: 'Password is necessary',
+          }}
+          required
         />
         <button className="p-2 bg-green-300 rounded-lg text-lg font-semibold">
-          {isPending ? 'Logining...' : 'Login'}
+          {isPending ? 'Please wait...' : 'Login'}
         </button>
       </form>
     </div>
