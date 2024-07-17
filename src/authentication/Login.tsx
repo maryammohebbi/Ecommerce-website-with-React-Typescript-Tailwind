@@ -27,11 +27,12 @@ const Login: React.FC = ({}) => {
   const loginHandler = async ({ userName, password }: Inputs) => {
     try {
       await mutateAsync({ userName, password })
-      toast.success('Welcome!')
+      toast.success(`Welcome ${userName}! `)
       navigate('/')
-      console.log(`welcome ${userName}`)
-    } catch (error) {
-      toast.error('Your login failed.')
+      // console.log(`welcome ${userName}`)
+    } catch (error: any) {
+      const errorMessage = error?.response?.data?.message || 'Login failed.'
+      toast.error(errorMessage)
     }
   }
 

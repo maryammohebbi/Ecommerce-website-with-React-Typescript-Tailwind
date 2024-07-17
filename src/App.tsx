@@ -7,6 +7,7 @@ import { DarkModeProvider } from './context/DarkModeContext'
 import SingleProduct from './features/products/SingleProduct'
 import Cart from './features/cart/Cart'
 import Auth from './pages/Auth'
+import { Toaster } from 'react-hot-toast'
 
 const queryClient = new QueryClient()
 
@@ -14,6 +15,7 @@ function App() {
   return (
     <DarkModeProvider>
       <QueryClientProvider client={queryClient}>
+        <Toaster />
         <AppLayout>
           <Routes>
             <Route path="/" element={<Home />} />
