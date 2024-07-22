@@ -1,6 +1,7 @@
 import React from 'react'
 import DarkModeToggle from './DarkModeToggle'
 import CartIcon from './CartIcon'
+import LoginIcon from './LoginIcon'
 
 type Props = {}
 
@@ -11,7 +12,9 @@ const Menu: React.FC<Props> = ({}) => {
         <div className="text-textColor">
           <CartIcon />
         </div>
-        <div>login | signup</div>
+        <div>
+          <LoginIcon />
+        </div>
         <div>search</div>
         <div>
           <DarkModeToggle />

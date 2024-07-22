@@ -1,27 +1,53 @@
-// import { AxiosResponse } from "axios";
 import http from "./httpService";
 
 interface LoginDataTypes {
     userName: string
     password: string
 }
-
 interface LoginResponse {
     token: string
+    userId: number
+}
+export interface User {
+    id: number;
+    email: string;
+    username: string;
+    name: {
+        firstname: string;
+        lastname: string;
+    };
+    address: {
+        city: string;
+        street: string;
+        number: number;
+        zipcode: string;
+        geolocation: {
+            lat: string;
+            long: string;
+        };
+    };
+    phone: string;
 }
 
 export async function getLoginInfo(data: LoginDataTypes): Promise<LoginResponse> {
     try {
-        // console.log("Login data:", data); // Debug log
-
-        const response = await http.post<LoginResponse>("/auth/login", {
+        const response = await http.post<LoginResponse>('/auth/login', {
             username: data.userName,
             password: data.password,
-        })
-        // console.log("API response:", response); // Debug log
+        });
         return response.data;
     } catch (error) {
-        // console.error("Login error:", error); // Debug log
-        throw error; // Re-throw the error for handling in Login.tsx
+        throw error;
+    }
+}
+
+
+export async function getUser(userId: number): Promise<User> {
+    try {
+        const response = await http.get<User>(`/users/${userId}`);
+        return response.data;
+    } catch (error) {
+        console.error('Get user error:', error);
+        throw error;
     }
 }

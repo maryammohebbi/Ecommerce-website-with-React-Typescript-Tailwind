@@ -5,6 +5,7 @@ import { useMutation } from '@tanstack/react-query'
 import { getLoginInfo } from '../features/services/authService'
 import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import { decodeToken } from '../features/services/tokenService'
 
 type Inputs = {
   userName: string
@@ -26,10 +27,20 @@ const Login: React.FC = ({}) => {
 
   const loginHandler = async ({ userName, password }: Inputs) => {
     try {
-      await mutateAsync({ userName, password })
-      toast.success(`Welcome ${userName}! `)
+      const { token } = await mutateAsync({ userName, password })
+      // const token = response.token
+
+      // Store the token in local storage
+      localStorage.setItem('userToken', token)
+
+      // Decode the token to get the user ID
+      const { userId } = decodeToken(token)
+
+      // Store the user ID in local storage
+      localStorage.setItem('userId', userId.toString())
+
+      toast.success(`Welcome ${userName}!`)
       navigate('/')
-      // console.log(`welcome ${userName}`)
     } catch (error: any) {
       const errorMessage = error?.response?.data?.message || 'Login failed.'
       toast.error(errorMessage)
