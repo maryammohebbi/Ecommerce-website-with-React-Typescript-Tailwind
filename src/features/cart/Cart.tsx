@@ -23,7 +23,7 @@ const Cart: React.FC<Cart> = ({ cart, cartNumber }) => {
   const { products } = cart
 
   return (
-    <div>
+    <div className="mb-8">
       <div className="flex justify-between mb-2">
         <span className="text-textColor font-bold flex gap-x-1 items-center">
           Cart <TbNumber className="w-5 h-5" /> : {cartNumber}

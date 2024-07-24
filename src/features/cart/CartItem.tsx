@@ -20,8 +20,8 @@ const CartItem: React.FC<CartProduct> = ({ product }) => {
 
   return (
     <div className="flex flex-col gap-y-4">
-      <div className="flex justify-between items-center p-4 border-2 border-slate-400 rounded-lg bg-slate-300 hover:bg-slate-400 transition-all duration-500 shadow-2xl">
-        <div className="w-[30%] h-[10rem] bg-white">
+      <div className="flex flex-col gap-y-4 md:flex-row justify-center md:justify-between items-center p-4 border-2 border-slate-400 rounded-lg bg-slate-300 hover:bg-slate-400 transition-all duration-500 shadow-2xl">
+        <div className="w-full md:w-[30%] h-[10rem] bg-white">
           <Link to={`/products/${cartProduct?.id}`}>
             <img
               src={cartProduct?.image}
@@ -31,7 +31,7 @@ const CartItem: React.FC<CartProduct> = ({ product }) => {
           </Link>
         </div>
 
-        <div className="flex flex-col bg-pink-100">
+        <div className="flex flex-col w-full md:w-[50%] p-2 gap-y-4">
           <div>
             <span className="font-black">Title:</span>
             <span className="font-semibold">&nbsp; {cartProduct?.title}</span>
@@ -44,7 +44,7 @@ const CartItem: React.FC<CartProduct> = ({ product }) => {
           </div>
         </div>
 
-        <div className="flex gap-x-2 items-center">
+        <div className="flex gap-x-2 items-center justify-center w-full md:w-[15%]">
           <button className="border-2 border-slate-500 w-7 h-7 rounded-md flex items-center justify-center font-black shadow-2xl">
             -
           </button>
@@ -53,7 +53,7 @@ const CartItem: React.FC<CartProduct> = ({ product }) => {
             +
           </button>
         </div>
-        <button>
+        <button className="w-full md:w-[14%] flex justify-center">
           <GoTrash className="w-7 h-7 text-error" />
         </button>
       </div>
