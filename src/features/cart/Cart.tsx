@@ -1,17 +1,42 @@
 import React from 'react'
 import CartItem from './CartItem'
-import useUser from '../../authentication/useUser'
+import { AiTwotoneCloseSquare } from 'react-icons/ai'
+import { TbNumber } from 'react-icons/tb'
 
-const Cart: React.FC = ({}) => {
-  const user = useUser()
+interface Cart {
+  cart: {
+    id: number
+    userId: number
+    date: string
+    products: [
+      {
+        productId: number
+        quantity: number
+      }
+    ]
+    __v: number
+  }
+  cartNumber: number
+}
+
+const Cart: React.FC<Cart> = ({ cart, cartNumber }) => {
+  const { products } = cart
 
   return (
-    <div className="container p-5">
+    <div>
+      <div className="flex justify-between mb-2">
+        <span className="text-textColor font-bold flex gap-x-1 items-center">
+          Cart <TbNumber className="w-5 h-5" /> : {cartNumber}
+        </span>
+        <button>
+          <AiTwotoneCloseSquare className="w-8 h-8" />
+        </button>
+      </div>
       <div className="flex flex-col lg:flex-row gap-y-8 lg:gap-x-8 ">
-        <div className="lg:w-4/5 h-auto bg-slate-200 border-2 border-secondary p-3 rounded-lg">
-          <CartItem />
-          <p className="font-bold text-textColor">{user?.name.firstname}</p>
-          <p className="font-bold text-textColor">{user?.name.lastname}</p>
+        <div className="lg:w-4/5 h-auto bg-slate-200 border-2 border-secondary p-3 rounded-lg flex flex-col gap-y-3">
+          {products.map((product, index) => (
+            <CartItem key={index + 1} product={product} />
+          ))}
         </div>
         <div className="lg:w-1/5 h-52 bg-slate-300 border-2 border-secondary p-3 rounded-lg">
           <div className="p-2 border-2 border-gray-500 mb-12 h-[50%] flex items-center rounded-lg">

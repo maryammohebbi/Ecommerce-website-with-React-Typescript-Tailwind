@@ -5,9 +5,9 @@ import Products from './pages/Products'
 import AppLayout from './features/ui/AppLayout'
 import { DarkModeProvider } from './context/DarkModeContext'
 import SingleProduct from './features/products/SingleProduct'
-import Cart from './features/cart/Cart'
 import Auth from './pages/Auth'
 import { Toaster } from 'react-hot-toast'
+import Cart from './pages/Cart'
 
 const queryClient = new QueryClient()
 
