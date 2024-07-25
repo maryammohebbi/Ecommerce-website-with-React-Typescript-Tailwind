@@ -2,6 +2,8 @@ import React from 'react'
 import DarkModeToggle from './DarkModeToggle'
 import CartIcon from './CartIcon'
 import LoginIcon from './LoginIcon'
+import { Link } from 'react-router-dom'
+import { Tooltip } from '@mui/material'
 
 type Props = {}
 
@@ -9,16 +11,24 @@ const Menu: React.FC<Props> = ({}) => {
   return (
     <div className="border-b-2 border-t-2 border-secondary">
       <div className="container flex justify-between p-2 text-textColor">
-        <div className="text-textColor">
-          <CartIcon />
+        <div>
+          <Link to="/">Home</Link>
         </div>
+
         <div>
           <LoginIcon />
         </div>
         <div>search</div>
-        <div>
-          <DarkModeToggle />
-        </div>
+        <Tooltip title="Theme" placement="bottom" arrow>
+          <div>
+            <DarkModeToggle />
+          </div>
+        </Tooltip>
+        <Tooltip title="Cart" placement="bottom" arrow>
+          <div className="text-textColor">
+            <CartIcon />
+          </div>
+        </Tooltip>
       </div>
     </div>
   )
