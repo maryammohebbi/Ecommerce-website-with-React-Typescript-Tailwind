@@ -8,6 +8,7 @@ import SingleProduct from './features/products/SingleProduct'
 import Auth from './pages/Auth'
 import { Toaster } from 'react-hot-toast'
 import Cart from './pages/Cart'
+import { CartNumberProvider } from './context/CartNumberContext'
 
 const queryClient = new QueryClient()
 
@@ -16,16 +17,18 @@ function App() {
     <DarkModeProvider>
       <QueryClientProvider client={queryClient}>
         <Toaster />
-        <AppLayout>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="products" element={<Products />} />
-            <Route path="products/:id" element={<SingleProduct />} />
-            {/* <Route path="products/:category" element={<Products />} /> */}
-            <Route path="checkout/cart" element={<Cart />} />
-            <Route path="/auth" element={<Auth />} />
-          </Routes>
-        </AppLayout>
+        <CartNumberProvider>
+          <AppLayout>
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="products" element={<Products />} />
+              <Route path="products/:id" element={<SingleProduct />} />
+              {/* <Route path="products/:category" element={<Products />} /> */}
+              <Route path="checkout/cart" element={<Cart />} />
+              <Route path="/auth" element={<Auth />} />
+            </Routes>
+          </AppLayout>
+        </CartNumberProvider>
       </QueryClientProvider>
     </DarkModeProvider>
   )
