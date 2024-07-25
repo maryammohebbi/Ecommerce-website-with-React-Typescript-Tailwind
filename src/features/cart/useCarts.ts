@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { getCartsApi } from "../services/cartService";
 import { AxiosResponse } from "axios";
 
-interface Cart {
+export interface Cart {
     id: number
     userId: number
     date: string

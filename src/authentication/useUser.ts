@@ -21,7 +21,7 @@ const useUser = (): User | null => {
     fetchUser();
   }, [token, userId]);
 
-  return user;
+  return user
 };
 
-export default useUser;
+export default useUser
