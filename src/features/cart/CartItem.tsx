@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { GoTrash } from 'react-icons/go'
 import { Link } from 'react-router-dom'
 import useProducts from '../products/useProducts'
@@ -8,29 +8,41 @@ interface CartProduct {
     productId: number
     quantity: number
   }
+  quantity: number
+  onQuantityChange: (productId: number, newQuantity: number) => void
 }
 
-const CartItem: React.FC<CartProduct> = ({ product }) => {
+const CartItem: React.FC<CartProduct> = ({
+  product,
+  quantity,
+  onQuantityChange,
+}) => {
   const { products } = useProducts()
 
   const cartProduct = products?.find((p) => p.id === product.productId)
 
-  const [prodQuantity, setProdQuantity] = useState(product.quantity)
+  // const [prodQuantity, setProdQuantity] = useState(product.quantity)
 
-  // const quantityHandler = () => {
-  //   useEffect(() => {
-  //     setProdQuantity(prodQuantity - 1)
-  //   }, [setProdQuantity, prodQuantity])
+  // const incrementQuantity = () => {
+  //   setProdQuantity((prevQuantity) => prevQuantity + 1)
   // }
+
+  // const decrementQuantity = () => {
+  //   setProdQuantity((prevQuantity) =>
+  //     prevQuantity > 1 ? prevQuantity - 1 : prevQuantity
+  //   )
+  // }
+
   const incrementQuantity = () => {
-    setProdQuantity((prevQuantity) => prevQuantity + 1)
+    onQuantityChange(product.productId, quantity + 1)
   }
 
   const decrementQuantity = () => {
-    setProdQuantity((prevQuantity) =>
-      prevQuantity > 1 ? prevQuantity - 1 : prevQuantity
-    )
+    if (quantity > 1) {
+      onQuantityChange(product.productId, quantity - 1)
+    }
   }
+
   return (
     <div className="flex flex-col gap-y-4">
       <div className="flex flex-col gap-y-4 md:flex-row justify-center md:justify-between items-center p-4 border-2 border-slate-400 rounded-lg bg-slate-300 hover:bg-slate-400 transition-all duration-500 shadow-2xl">
@@ -52,7 +64,7 @@ const CartItem: React.FC<CartProduct> = ({ product }) => {
           <div>
             <span className="font-black">Price:</span>
             <span className="font-semibold">
-              &nbsp; {((cartProduct?.price ?? 0) * prodQuantity).toFixed(2)} $
+              &nbsp; {((cartProduct?.price ?? 0) * quantity).toFixed(2)} $
             </span>
           </div>
         </div>
@@ -64,7 +76,7 @@ const CartItem: React.FC<CartProduct> = ({ product }) => {
           >
             -
           </button>
-          <span className="font-black text-xl">{prodQuantity}</span>
+          <span className="font-black text-xl">{quantity}</span>
           <button
             onClick={incrementQuantity}
             className="border-2 border-slate-500 w-7 h-7 rounded-md flex items-center justify-center font-black shadow-2xl"
