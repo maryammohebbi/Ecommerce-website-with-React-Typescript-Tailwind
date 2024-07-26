@@ -3,7 +3,7 @@ import CartItem from './CartItem'
 import { AiTwotoneCloseSquare } from 'react-icons/ai'
 import { TbNumber } from 'react-icons/tb'
 import useProducts from '../products/useProducts'
-import useDeleteCart from './useDeleteCart'
+import { Tooltip } from '@mui/material'
 
 interface Cart {
   cart: {
@@ -19,12 +19,12 @@ interface Cart {
     __v: number
   }
   cartNo: number
+  onDelete: (cartId: number) => void
 }
 
-const Cart: React.FC<Cart> = ({ cart, cartNo }) => {
+const Cart: React.FC<Cart> = ({ cart, cartNo, onDelete }) => {
   const { products: cartProducts } = cart
   const { products: productList } = useProducts()
-  const { deleteCart, isDeleting } = useDeleteCart()
 
   const [quantities, setQuantities] = useState(
     cartProducts.reduce((acc, product) => {
@@ -53,9 +53,11 @@ const Cart: React.FC<Cart> = ({ cart, cartNo }) => {
         <span className="text-textColor font-bold flex gap-x-1 items-center">
           Cart <TbNumber className="w-5 h-5" /> : {cartNo}
         </span>
-        <button onClick={() => deleteCart(cart.id)} disabled={isDeleting}>
-          <AiTwotoneCloseSquare className="w-8 h-8" />
-        </button>
+        <Tooltip title="Delete cart" placement="top" arrow>
+          <button onClick={() => onDelete(cart.id)}>
+            <AiTwotoneCloseSquare className="w-8 h-8" />
+          </button>
+        </Tooltip>
       </div>
       <div className="flex flex-col lg:flex-row gap-y-8 lg:gap-x-8 w-full">
         <div className="lg:w-[70%] h-auto bg-slate-200 border-2 border-secondary p-3 rounded-lg flex flex-col gap-y-3">

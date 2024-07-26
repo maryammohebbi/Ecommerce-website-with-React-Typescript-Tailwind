@@ -2,6 +2,7 @@ import React from 'react'
 import { GoTrash } from 'react-icons/go'
 import { Link } from 'react-router-dom'
 import useProducts from '../products/useProducts'
+import { Tooltip } from '@mui/material'
 
 interface CartProduct {
   product: {
@@ -84,9 +85,11 @@ const CartItem: React.FC<CartProduct> = ({
             +
           </button>
         </div>
-        <button className="w-full md:w-[14%] flex justify-center">
-          <GoTrash className="w-7 h-7 text-error" />
-        </button>
+        <Tooltip title="Delete product" placement="top" arrow>
+          <button className="w-full md:w-[14%] flex justify-center">
+            <GoTrash className="w-7 h-7 text-error" />
+          </button>
+        </Tooltip>
       </div>
     </div>
   )
