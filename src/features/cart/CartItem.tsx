@@ -11,12 +11,14 @@ interface CartProduct {
   }
   quantity: number
   onQuantityChange: (productId: number, newQuantity: number) => void
+  onDelete: (productId: number) => void
 }
 
 const CartItem: React.FC<CartProduct> = ({
   product,
   quantity,
   onQuantityChange,
+  onDelete,
 }) => {
   const { products } = useProducts()
 
@@ -86,7 +88,10 @@ const CartItem: React.FC<CartProduct> = ({
           </button>
         </div>
         <Tooltip title="Delete product" placement="top" arrow>
-          <button className="w-full md:w-[14%] flex justify-center">
+          <button
+            onClick={() => onDelete(product.productId)}
+            className="w-full md:w-[14%] flex justify-center"
+          >
             <GoTrash className="w-7 h-7 text-error" />
           </button>
         </Tooltip>

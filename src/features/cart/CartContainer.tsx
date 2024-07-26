@@ -20,29 +20,61 @@ const CartContainer: React.FC = () => {
   //   const userCartDel = userCarts?.filter((cart) => cart.id !== cartId)
   //   return userCartDel
   // }
-  const [userCarts, setUserCarts] = useState(
-    carts?.filter((cart) => cart.userId === user?.id) || []
-  )
 
+  // const [userCarts, setUserCarts] = useState<Cart['cart'][]>(
+  //   carts?.filter((cart) => cart.userId === user?.id) || []
+  // )
+  const [userCarts, setUserCarts] = useState<Cart['cart'][]>([])
+
+  // useEffect(() => {
+  //   if (carts) {
+  //     setUserCarts(carts.filter((cart) => cart.userId === user?.id))
+  //   }
+  // }, [carts, user])
   useEffect(() => {
-    if (carts) {
-      setUserCarts(carts.filter((cart) => cart.userId === user?.id))
+    if (carts && user) {
+      const filteredCarts = carts.filter((cart) => cart.userId === user.id)
+      setUserCarts(filteredCarts)
     }
   }, [carts, user])
 
   useEffect(() => {
-    if (userCarts) {
-      const productsLength = userCarts.reduce(
-        (acc, curr) => acc + curr.products.length,
-        0
-      )
-      setCartNumber(productsLength)
-    }
+    const productsLength = userCarts.reduce(
+      (acc, curr) => acc + curr.products.length,
+      0
+    )
+    setCartNumber(productsLength)
   }, [userCarts, setCartNumber])
+
+  // const handleDeleteCart = (cartId: number) => {
+  //   setUserCarts((prevCarts) => prevCarts.filter((cart) => cart.id !== cartId))
+  //   toast.success('Cart deleted successfully')
+  // }
 
   const handleDeleteCart = (cartId: number) => {
     setUserCarts((prevCarts) => prevCarts.filter((cart) => cart.id !== cartId))
     toast.success('Cart deleted successfully')
+  }
+
+  // const handleUpdateCartProducts = (
+  //   cartId: number,
+  //   updatedProducts: { productId: number; quantity: number }[]
+  // ) => {
+  //   const updatedCarts = userCarts.map((cart) =>
+  //     cart.id === cartId ? { ...cart, products: updatedProducts } : cart
+  //   )
+  //   setUserCarts(updatedCarts)
+  // }
+
+  const handleUpdateCartProducts = (
+    cartId: number,
+    updatedProducts: { productId: number; quantity: number }[]
+  ) => {
+    setUserCarts((prevCarts) =>
+      prevCarts.map((cart) =>
+        cart.id === cartId ? { ...cart, products: updatedProducts } : cart
+      )
+    )
   }
 
   if (isCartsLoading) return <Loader />
@@ -56,6 +88,7 @@ const CartContainer: React.FC = () => {
           cart={cart}
           cartNo={index + 1}
           onDelete={handleDeleteCart}
+          onUpdateProducts={handleUpdateCartProducts}
         />
       ))}
     </div>

@@ -1,30 +1,42 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import CartItem from './CartItem'
 import { AiTwotoneCloseSquare } from 'react-icons/ai'
 import { TbNumber } from 'react-icons/tb'
 import useProducts from '../products/useProducts'
 import { Tooltip } from '@mui/material'
+import Empty from '../ui/Empty'
 
 interface Cart {
   cart: {
     id: number
     userId: number
     date: string
-    products: [
-      {
-        productId: number
-        quantity: number
-      }
-    ]
+    products: {
+      productId: number
+      quantity: number
+    }[]
     __v: number
   }
   cartNo: number
   onDelete: (cartId: number) => void
+  onUpdateProducts: (
+    cartId: number,
+    updatedProducts: { productId: number; quantity: number }[]
+  ) => void
 }
 
-const Cart: React.FC<Cart> = ({ cart, cartNo, onDelete }) => {
-  const { products: cartProducts } = cart
+const Cart: React.FC<Cart> = ({ cart, cartNo, onDelete, onUpdateProducts }) => {
+  // const { products: cartProducts } = cart
   const { products: productList } = useProducts()
+  const [cartProducts, setCartProducts] = useState(cart.products)
+
+  useEffect(() => {
+    setCartProducts(cart.products)
+  }, [cart.products])
+
+  useEffect(() => {
+    onUpdateProducts(cart.id, cartProducts)
+  }, [cartProducts, cart.id, onUpdateProducts])
 
   const [quantities, setQuantities] = useState(
     cartProducts.reduce((acc, product) => {
@@ -40,12 +52,20 @@ const Cart: React.FC<Cart> = ({ cart, cartNo, onDelete }) => {
     }))
   }
 
+  const handleDeleteProduct = (productId: number) => {
+    setCartProducts((prevProducts) =>
+      prevProducts.filter((product) => product.productId !== productId)
+    )
+  }
+
   const totalPrice = cartProducts.reduce((acc, product) => {
     const productDetails = productList?.find((p) => p.id === product.productId)
     return (
       acc + (productDetails?.price ?? 0) * (quantities[product.productId] || 0)
     )
   }, 0)
+
+  // if (cartProducts.length === 0) return <Empty sourceName="product" />
 
   return (
     <div className="mb-8">
@@ -61,14 +81,19 @@ const Cart: React.FC<Cart> = ({ cart, cartNo, onDelete }) => {
       </div>
       <div className="flex flex-col lg:flex-row gap-y-8 lg:gap-x-8 w-full">
         <div className="lg:w-[70%] h-auto bg-slate-200 border-2 border-secondary p-3 rounded-lg flex flex-col gap-y-3">
-          {cartProducts.map((product, index) => (
-            <CartItem
-              key={index + 1}
-              product={product}
-              quantity={quantities[product.productId]}
-              onQuantityChange={handleQuantityChange}
-            />
-          ))}
+          {cartProducts.length === 0 ? (
+            <Empty sourceName="product" />
+          ) : (
+            cartProducts.map((product, index) => (
+              <CartItem
+                key={index + 1}
+                product={product}
+                quantity={quantities[product.productId]}
+                onQuantityChange={handleQuantityChange}
+                onDelete={handleDeleteProduct}
+              />
+            ))
+          )}
         </div>
         <div className="lg:w-[30%] h-52 bg-slate-300 border-2 border-secondary p-3 rounded-lg">
           <div className="p-2 border-2 border-gray-500 mb-12 h-[50%] flex items-center rounded-lg">
