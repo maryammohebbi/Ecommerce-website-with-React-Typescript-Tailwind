@@ -9,6 +9,7 @@ import Auth from './pages/Auth'
 import { Toaster } from 'react-hot-toast'
 import Cart from './pages/Cart'
 import { CartNumberProvider } from './context/CartNumberContext'
+import Profile from './features/user/Profile'
 
 const queryClient = new QueryClient()
 
@@ -26,6 +27,7 @@ function App() {
               {/* <Route path="products/:category" element={<Products />} /> */}
               <Route path="checkout/cart" element={<Cart />} />
               <Route path="/auth" element={<Auth />} />
+              <Route path="/profile" element={<Profile />} />
             </Routes>
           </AppLayout>
         </QueryClientProvider>
