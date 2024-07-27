@@ -4,7 +4,7 @@ import { IoMdLogIn } from 'react-icons/io'
 import useUser from '../../authentication/useUser'
 import { IoIosLogOut } from 'react-icons/io'
 import toast from 'react-hot-toast'
-import { Tooltip } from '@mui/material'
+// import { Tooltip } from '@mui/material'
 
 const LoginIcon: React.FC = ({}) => {
   const user = useUser()
@@ -12,19 +12,24 @@ const LoginIcon: React.FC = ({}) => {
   return (
     <div>
       {user ? (
-        <div className="flex gap-x-2 items-center">
-          <span>Hi, {user.name.firstname} !</span>
-          <Tooltip title="Logout" placement="bottom" arrow>
+        <div className="relative group">
+          <span className="cursor-pointer">Hi, {user.name.firstname} !</span>
+          <div
+            className="opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-500 
+            absolute top-full -left-6 w-28 flex flex-col gap-y-2 p-2 border-2 border-secondary rounded bg-secondaryBg text-white"
+          >
+            <Link to="/profile">Your Profile</Link>
             <button
+              className="flex items-center gap-x-1 hover:text-red-400 transition-all duration-500"
               onClick={() => {
                 // setUser(null)
                 navigate('/')
                 toast(`See you next time, ${user.name.firstname} 👋`)
               }}
             >
-              <IoIosLogOut className="w-5 h-5 hover:text-red-400 transition-all duration-500" />
+              Logout <IoIosLogOut className="w-5 h-5 " />
             </button>
-          </Tooltip>
+          </div>
         </div>
       ) : (
         <Link to="/auth">

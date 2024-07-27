@@ -29,3 +29,8 @@ body {
   font-family: 'Dosis', sans-serif;
   background-color: var(--background-app);
 }
+
+/* .userContainer:hover .userBackDrop {
+  display: flex;
+  transition: all 0.5s;
+} */
