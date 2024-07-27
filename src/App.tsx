@@ -15,9 +15,9 @@ const queryClient = new QueryClient()
 function App() {
   return (
     <DarkModeProvider>
-      <QueryClientProvider client={queryClient}>
-        <Toaster />
-        <CartNumberProvider>
+      <CartNumberProvider>
+        <QueryClientProvider client={queryClient}>
+          <Toaster />
           <AppLayout>
             <Routes>
               <Route path="/" element={<Home />} />
@@ -28,8 +28,8 @@ function App() {
               <Route path="/auth" element={<Auth />} />
             </Routes>
           </AppLayout>
-        </CartNumberProvider>
-      </QueryClientProvider>
+        </QueryClientProvider>
+      </CartNumberProvider>
     </DarkModeProvider>
   )
 }

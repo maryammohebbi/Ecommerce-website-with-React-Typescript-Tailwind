@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useCallback, useEffect, useMemo } from 'react'
 import Cart from './Cart'
 import useUser from '../../authentication/useUser'
 import useCarts from './useCarts'
@@ -12,26 +12,9 @@ const CartContainer: React.FC = () => {
   const { carts, isCartsLoading } = useCarts()
   const { setCartNumber } = useCartNumber()
 
-  // const userCarts = carts?.filter((cart) => cart.userId === user?.id)
-
-  // const userCartDel = userCarts?.filter(cart => cart.id !== id)
-
-  // const cartDel = (cartId: number) => {
-  //   const userCartDel = userCarts?.filter((cart) => cart.id !== cartId)
-  //   return userCartDel
-  // }
-
-  // const [userCarts, setUserCarts] = useState<Cart['cart'][]>(
-  //   carts?.filter((cart) => cart.userId === user?.id) || []
-  // )
   const [userCarts, setUserCarts] = useState<Cart['cart'][]>([])
 
-  // useEffect(() => {
-  //   if (carts) {
-  //     setUserCarts(carts.filter((cart) => cart.userId === user?.id))
-  //   }
-  // }, [carts, user])
-  useEffect(() => {
+  const getUserCarts = useCallback(() => {
     if (carts && user) {
       const filteredCarts = carts.filter((cart) => cart.userId === user.id)
       setUserCarts(filteredCarts)
@@ -39,43 +22,35 @@ const CartContainer: React.FC = () => {
   }, [carts, user])
 
   useEffect(() => {
-    const productsLength = userCarts.reduce(
-      (acc, curr) => acc + curr.products.length,
-      0
-    )
-    setCartNumber(productsLength)
-  }, [userCarts, setCartNumber])
+    getUserCarts()
+  }, [getUserCarts])
 
-  // const handleDeleteCart = (cartId: number) => {
-  //   setUserCarts((prevCarts) => prevCarts.filter((cart) => cart.id !== cartId))
-  //   toast.success('Cart deleted successfully')
-  // }
+  const cartNumber = useMemo(() => {
+    return userCarts.reduce((acc, curr) => acc + curr.products.length, 0)
+  }, [userCarts])
 
-  const handleDeleteCart = (cartId: number) => {
+  useEffect(() => {
+    setCartNumber(cartNumber)
+  }, [cartNumber, setCartNumber])
+
+  const handleDeleteCart = useCallback((cartId: number) => {
     setUserCarts((prevCarts) => prevCarts.filter((cart) => cart.id !== cartId))
     toast.success('Cart deleted successfully')
-  }
+  }, [])
 
-  // const handleUpdateCartProducts = (
-  //   cartId: number,
-  //   updatedProducts: { productId: number; quantity: number }[]
-  // ) => {
-  //   const updatedCarts = userCarts.map((cart) =>
-  //     cart.id === cartId ? { ...cart, products: updatedProducts } : cart
-  //   )
-  //   setUserCarts(updatedCarts)
-  // }
-
-  const handleUpdateCartProducts = (
-    cartId: number,
-    updatedProducts: { productId: number; quantity: number }[]
-  ) => {
-    setUserCarts((prevCarts) =>
-      prevCarts.map((cart) =>
-        cart.id === cartId ? { ...cart, products: updatedProducts } : cart
+  const handleUpdateCartProducts = useCallback(
+    (
+      cartId: number,
+      updatedProducts: { productId: number; quantity: number }[]
+    ) => {
+      setUserCarts((prevCarts) =>
+        prevCarts.map((cart) =>
+          cart.id === cartId ? { ...cart, products: updatedProducts } : cart
+        )
       )
-    )
-  }
+    },
+    []
+  )
 
   if (isCartsLoading) return <Loader />
   if (!userCarts || userCarts.length === 0) return <Empty sourceName="cart" />
