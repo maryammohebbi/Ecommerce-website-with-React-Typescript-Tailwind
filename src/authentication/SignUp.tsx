@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
 import { signUpUserApi } from '../features/services/authService'
 
-interface SingUpUser {
+interface SignUpUser {
   email: string
   userName: string
   password: string
@@ -18,7 +18,7 @@ const SignUp: React.FC = ({}) => {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm<SingUpUser>()
+  } = useForm<SignUpUser>()
 
   const navigate = useNavigate()
 
@@ -26,7 +26,7 @@ const SignUp: React.FC = ({}) => {
     mutationFn: signUpUserApi,
   })
 
-  const onSubmitSignup = (data: SingUpUser) => {
+  const onSubmitSignup = (data: SignUpUser) => {
     try {
       signup(data)
       toast.success(`Welcome ${data.userName}`)
