@@ -4,7 +4,7 @@ import { IoMdLogIn } from 'react-icons/io'
 import useUser from '../../authentication/useUser'
 import { IoIosLogOut } from 'react-icons/io'
 import toast from 'react-hot-toast'
-// import { Tooltip } from '@mui/material'
+import { CgProfile } from 'react-icons/cg'
 
 const LoginIcon: React.FC = ({}) => {
   const user = useUser()
@@ -13,10 +13,12 @@ const LoginIcon: React.FC = ({}) => {
     <div>
       {user ? (
         <div className="relative group">
-          <span className="cursor-pointer">Hi, {user.name.firstname} !</span>
+          <span className="cursor-pointer flex items-center gap-x-1">
+            <CgProfile className="w-6 h-6" /> Hi, {user.name.firstname} !
+          </span>
           <div
             className="opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-500 
-            absolute top-full -left-6 w-28 flex flex-col gap-y-2 p-2 border-2 border-secondary rounded bg-secondaryBg text-white"
+            absolute top-full -left-3 w-28 flex flex-col gap-y-2 p-2 border-2 border-secondary rounded bg-secondaryBg text-white"
           >
             <Link to="/profile">Your Profile</Link>
             <button

@@ -28,6 +28,13 @@ export interface User {
     };
     phone: string;
 }
+export interface SingUpUser {
+    email: string
+    userName: string
+    password: string
+    phone: string
+}
+
 
 export async function getLoginInfo(data: LoginDataTypes): Promise<LoginResponse> {
     try {
@@ -50,4 +57,9 @@ export async function getUser(userId: number): Promise<User> {
         console.error('Get user error:', error);
         throw error;
     }
+}
+
+export async function signUpUserApi(data: SingUpUser): Promise<SingUpUser> {
+    const response = await http.post<SingUpUser>("/users", data)
+    return response.data
 }

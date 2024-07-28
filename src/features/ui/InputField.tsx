@@ -12,6 +12,10 @@ interface InputProps {
       value: number
       message: string
     }
+    pattern?: {
+      value: RegExp
+      message: string
+    }
   }
   errors: any
 }

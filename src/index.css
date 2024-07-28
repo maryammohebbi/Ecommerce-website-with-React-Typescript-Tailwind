@@ -30,7 +30,7 @@ body {
   background-color: var(--background-app);
 }
 
-/* .userContainer:hover .userBackDrop {
+/* .userContainer:hover .dropDown {
   display: flex;
   transition: all 0.5s;
 } */
