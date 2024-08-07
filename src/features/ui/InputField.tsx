@@ -34,7 +34,7 @@ const InputField: React.FC<InputProps> = ({
         {label} {required && <span className="text-red-500 text-xl">*</span>}
       </label>
       <input
-        className="p-2 rounded-lg w-full"
+        className="p-2 rounded-lg w-full text-black"
         {...register(name, validationSchema)}
         type={type}
       />

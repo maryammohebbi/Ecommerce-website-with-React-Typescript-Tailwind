@@ -24,16 +24,18 @@ const SignUp: React.FC = ({}) => {
 
   const { mutate: signup, isPending: isSigningUp } = useMutation({
     mutationFn: signUpUserApi,
+    onSuccess: (data) => {
+      toast.success(`Welcome ${data.userName}`)
+      navigate('/')
+    },
+    onError: (error: any) => {
+      toast.error(error.response.data.error) ||
+        'Singup failed, please try again.'
+    },
   })
 
   const onSubmitSignup = (data: SignUpUser) => {
-    try {
-      signup(data)
-      toast.success(`Welcome ${data.userName}`)
-      navigate('/')
-    } catch (error) {
-      toast.error('Singup failed, please try again.')
-    }
+    signup(data)
   }
 
   return (
@@ -88,6 +90,12 @@ const SignUp: React.FC = ({}) => {
             minLength: {
               value: 5,
               message: 'Password must be at least 5 characters',
+            },
+            pattern: {
+              value:
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
+              message:
+                'Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character',
             },
           }}
         />

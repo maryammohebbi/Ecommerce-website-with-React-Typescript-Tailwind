@@ -63,3 +63,7 @@ export async function signUpUserApi(data: SingUpUser): Promise<SingUpUser> {
     const response = await http.post<SingUpUser>("/users", data)
     return response.data
 }
+
+export async function updateUserApi(userId: number, data: User): Promise<User> {
+    return await http.patch(`/users/${userId}`, data)
+}

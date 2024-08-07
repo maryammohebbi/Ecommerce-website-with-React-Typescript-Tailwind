@@ -1,14 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useUser from '../../authentication/useUser'
+import UpdateUser from './UpdateUser'
 
 const Profile: React.FC = () => {
   const user = useUser()
+  const [open, setOpen] = useState(false)
   return (
     <div className="container">
       <h3 className="text-center p-2 font-bold text-3xl text-green-700 mb-6">
         - {user?.name.firstname}'s profile -
       </h3>
-      <form className="border-2 border-secondary rounded-xl text-xl p-5 max-w-sm sm:max-w-md md:max-w-2xl mx-auto shadow-2xl">
+      <div className="border-2 border-secondary rounded-xl text-xl p-5 max-w-sm sm:max-w-md md:max-w-2xl mx-auto shadow-2xl">
         <div className="text-textColor flex gap-x-3 border-b-2 border-gray-500 mb-8">
           <span>Firstname:</span> <p>{user?.name.firstname}</p>
         </div>
@@ -47,10 +49,14 @@ const Profile: React.FC = () => {
           </div>
         </div>
 
-        <button className="px-4 py-2 bg-purple-400 rounded-md mx-auto block">
+        <button
+          onClick={() => setOpen(true)}
+          className="px-4 py-2 bg-purple-400 rounded-md mx-auto block"
+        >
           EDIT PROFILE
         </button>
-      </form>
+      </div>
+      <UpdateUser open={open} onOpen={setOpen} />
     </div>
   )
 }
