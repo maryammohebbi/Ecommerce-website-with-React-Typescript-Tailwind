@@ -5,6 +5,7 @@ interface InputFieldProps {
   name: string
   label: string
   type: string
+  required?: boolean
   register: UseFormRegister<any>
   errors: any
   validationSchema: {

@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import InputField from '../ui/InputField'
 import { useForm } from 'react-hook-form'
 import { updateUserApi, User } from '../services/authService'
-import toast from 'react-hot-toast'
 
 interface UpdateUserProps {
   open: boolean
@@ -73,7 +72,7 @@ const UpdateUser: React.FC<UpdateUserProps> = ({
       })
       // console.log('Updated user:', updatedUser)
       onUpdate(updatedUser)
-      toast.success('User successfully updated')
+      // toast.success('User successfully updated')
       onOpen(false)
     }
   }
