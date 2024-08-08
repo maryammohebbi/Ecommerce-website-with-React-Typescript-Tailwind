@@ -19,7 +19,7 @@ export interface User {
     address: {
         city: string;
         street: string;
-        number: number;
+        number: string;
         zipcode: string;
         geolocation: {
             lat: string;

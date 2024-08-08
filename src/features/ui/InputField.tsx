@@ -1,48 +1,34 @@
 import React from 'react'
-import { UseFormRegister } from 'react-hook-form'
-interface InputProps {
-  type: string
-  label: string
+import { UseFormRegister, FieldErrors } from 'react-hook-form'
+
+interface InputFieldProps {
   name: string
+  label: string
+  type: string
   register: UseFormRegister<any>
-  required?: boolean
+  errors: any
   validationSchema: {
     required: string
-    minLength?: {
-      value: number
-      message: string
-    }
-    pattern?: {
-      value: RegExp
-      message: string
-    }
   }
-  errors: any
 }
-const InputField: React.FC<InputProps> = ({
-  type,
-  label,
-  register,
+
+const InputField: React.FC<InputFieldProps> = ({
   name,
-  validationSchema,
+  label,
+  type,
+  register,
   errors,
-  required,
+  validationSchema,
 }) => {
   return (
-    <div>
-      <label className="text-slate-200 block">
-        {label} {required && <span className="text-red-500 text-xl">*</span>}
-      </label>
+    <div className="flex flex-col mb-4">
+      <label className="text-slate-200 block">{label}</label>
       <input
-        className="p-2 rounded-lg w-full text-black"
-        {...register(name, validationSchema)}
+        className="p-2 border rounded-md text-black"
         type={type}
+        {...register(name, validationSchema)}
       />
-      {errors && errors[name] && (
-        <span className="text-red-400 block text-lg mt-1">
-          {errors[name]?.message}
-        </span>
-      )}
+      {errors[name] && <p className="text-red-600">{errors[name]?.message}</p>}
     </div>
   )
 }

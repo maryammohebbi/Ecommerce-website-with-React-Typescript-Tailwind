@@ -1,52 +1,80 @@
-import React from 'react'
-import useUser from '../../authentication/useUser'
+import React, { useEffect } from 'react'
 import InputField from '../ui/InputField'
 import { useForm } from 'react-hook-form'
 import { updateUserApi, User } from '../services/authService'
+import toast from 'react-hot-toast'
+
 interface UpdateUserProps {
   open: boolean
   onOpen: (open: boolean) => void
+  user: User | null
+  onUpdate: (updatedUser: User) => void
 }
-const UpdateUser: React.FC<UpdateUserProps> = ({ open, onOpen }) => {
-  const user = useUser()
 
+interface UpdatedUser {
+  firstname: string
+  lastname: string
+  username: string
+  email: string
+  phone: string
+  city: string
+  street: string
+  number: string
+  zipcode: string
+}
+
+const UpdateUser: React.FC<UpdateUserProps> = ({
+  open,
+  onOpen,
+  user,
+  onUpdate,
+}) => {
   const {
     register,
     formState: { errors },
     handleSubmit,
-  } = useForm({
-    defaultValues: {
-      firstname: user?.name.firstname,
-      lastname: user?.name.lastname || '',
-      username: user?.username || '',
-      email: user?.email || '',
-      phone: user?.phone || '',
-      city: user?.address.city || '',
-      street: user?.address.street || '',
-      number: user?.address.number || '',
-      zipcode: user?.address.zipcode || '',
-    },
-  })
+    reset,
+  } = useForm<UpdatedUser>()
 
-  const onSubmit = async (data: User) => {
+  useEffect(() => {
+    if (user) {
+      reset({
+        firstname: user.name.firstname,
+        lastname: user.name.lastname,
+        username: user.username,
+        email: user.email,
+        phone: user.phone,
+        city: user.address.city,
+        street: user.address.street,
+        number: user.address.number.toString(),
+        zipcode: user.address.zipcode,
+      })
+    }
+  }, [user, reset])
+
+  const onSubmit = async (data: UpdatedUser): Promise<void> => {
     if (user) {
       const updatedUser = await updateUserApi(user.id, {
+        ...user,
         name: {
-          firstname: data.name.firstname,
-          lastname: data.name.lastname,
+          firstname: data.firstname,
+          lastname: data.lastname,
         },
         username: data.username,
         email: data.email,
         phone: data.phone,
         address: {
-          city: data.address.city,
-          street: data.address.street,
-          number: data.address.number,
-          zipcode: data.address.zipcode,
+          city: data.city,
+          street: data.street,
+          number: data.number,
+          zipcode: data.zipcode,
+          geolocation: user.address.geolocation,
         },
       })
       console.log('Updated user:', updatedUser)
-      onOpen(false) // Close the modal
+      onUpdate(updatedUser)
+      toast.success('User successfully updated')
+      onOpen(false)
     }
   }
 
@@ -68,6 +96,9 @@ const UpdateUser: React.FC<UpdateUserProps> = ({ open, onOpen }) => {
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex flex-col gap-y-1 h-full overflow-y-scroll p-2"
               >
+                <h3 className="font-bold text-slate-300 text-xl text-center border-b-2 border-gray-400 mb-7">
+                  - Update User -
+                </h3>
                 <InputField
                   name="firstname"
                   label="Firstname"
@@ -142,11 +173,10 @@ const UpdateUser: React.FC<UpdateUserProps> = ({ open, onOpen }) => {
                         required: 'Street is necessary',
                       }}
                     />
-
                     <InputField
                       name="number"
                       label="Number"
-                      type="number"
+                      type="text"
                       register={register}
                       errors={errors}
                       validationSchema={{
@@ -156,7 +186,7 @@ const UpdateUser: React.FC<UpdateUserProps> = ({ open, onOpen }) => {
                     <InputField
                       name="zipcode"
                       label="Zipcode"
-                      type="number"
+                      type="text"
                       register={register}
                       errors={errors}
                       validationSchema={{
@@ -166,7 +196,7 @@ const UpdateUser: React.FC<UpdateUserProps> = ({ open, onOpen }) => {
                   </div>
                 </div>
                 <div className="flex justify-center">
-                  <button className="bg-green-600 rounded-lg shadow-2xl w-24 p-2 ">
+                  <button className="bg-green-600 rounded-lg shadow-2xl w-24 p-2 font-semibold border-2 border-green-700">
                     Save
                   </button>
                 </div>
