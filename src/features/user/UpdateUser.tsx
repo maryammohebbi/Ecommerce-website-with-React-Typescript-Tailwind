@@ -39,15 +39,15 @@ const UpdateUser: React.FC<UpdateUserProps> = ({
   useEffect(() => {
     if (user) {
       reset({
-        firstname: user.name.firstname,
-        lastname: user.name.lastname,
+        firstname: user?.name?.firstname,
+        lastname: user?.name?.lastname,
         username: user.username,
         email: user.email,
         phone: user.phone,
-        city: user.address.city,
-        street: user.address.street,
-        number: user.address.number.toString(),
-        zipcode: user.address.zipcode,
+        city: user.address?.city,
+        street: user.address?.street,
+        number: user.address?.number?.toString(),
+        zipcode: user.address?.zipcode,
       })
     }
   }, [user, reset])
