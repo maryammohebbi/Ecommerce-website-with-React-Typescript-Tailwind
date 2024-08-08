@@ -65,5 +65,11 @@ export async function signUpUserApi(data: SingUpUser): Promise<SingUpUser> {
 }
 
 export async function updateUserApi(userId: number, data: User): Promise<User> {
-    return await http.patch(`/users/${userId}`, data)
+    try {
+        const response = await http.patch<User>(`/users/${userId}`, data);
+        return response.data;
+    } catch (error) {
+        console.error('Update user error:', error);
+        throw error;
+    }
 }

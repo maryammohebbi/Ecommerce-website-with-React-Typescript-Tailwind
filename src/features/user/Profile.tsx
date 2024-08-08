@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import useUser from '../../authentication/useUser'
+// import useUser from '../../authentication/useUser'
 import UpdateUser from './UpdateUser'
-import { User } from '../services/authService'
+import { updateUserApi, User } from '../services/authService'
+import useUser from '../../authentication/useUser'
 
 const Profile: React.FC = () => {
   const user = useUser()
@@ -14,9 +15,12 @@ const Profile: React.FC = () => {
     }
   }, [user])
 
-  const handleUpdateUser = (newUser: User) => {
-    console.log('Updating user:', newUser)
-    setUpdatedUser(newUser)
+  const handleUpdateUser = async (newUser: User) => {
+    if (newUser.id) {
+      const updated = await updateUserApi(newUser.id, newUser)
+      // console.log('User updated successfully:', updated)
+      setUpdatedUser(updated)
+    }
   }
 
   return (

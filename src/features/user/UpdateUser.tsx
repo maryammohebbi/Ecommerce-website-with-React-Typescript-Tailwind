@@ -71,7 +71,7 @@ const UpdateUser: React.FC<UpdateUserProps> = ({
           geolocation: user.address.geolocation,
         },
       })
-      console.log('Updated user:', updatedUser)
+      // console.log('Updated user:', updatedUser)
       onUpdate(updatedUser)
       toast.success('User successfully updated')
       onOpen(false)
