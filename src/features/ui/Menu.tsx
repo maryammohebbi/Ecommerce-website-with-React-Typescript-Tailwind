@@ -9,7 +9,7 @@ type Props = {}
 
 const Menu: React.FC<Props> = ({}) => {
   return (
-    <div className="border-b-2 border-t-2 border-secondary">
+    <div className="bg-bgMenu border-b-2 border-t-2 border-secondary sticky top-0 z-50">
       <div className="container flex justify-between p-2 text-textColor">
         <div>
           <Link to="/">Home</Link>
