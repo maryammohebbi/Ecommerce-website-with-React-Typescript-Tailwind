@@ -2,14 +2,14 @@ import React from 'react'
 import useSingleProduct from './useSingleProduct'
 import Loader from '../ui/Loader'
 import Empty from '../ui/Empty'
-import { useCartNumber } from '../../context/CartNumberContext'
+// import { useCartNumber } from '../../context/CartNumberContext'
 
 const SingleProduct: React.FC = () => {
   const { isSingleProductLoading, product } = useSingleProduct()
-  const { setCartNumber } = useCartNumber()
+  // const { setCartNumber } = useCartNumber()
 
   const cartAddNumber = () => {
-    setCartNumber((prev) => prev + 1)
+    // setCartNumber((prev) => prev + 1)
   }
 
   if (isSingleProductLoading) return <Loader />
