@@ -2,9 +2,15 @@ import React from 'react'
 import useSingleProduct from './useSingleProduct'
 import Loader from '../ui/Loader'
 import Empty from '../ui/Empty'
+import { useCartNumber } from '../../context/CartNumberContext'
 
 const SingleProduct: React.FC = () => {
   const { isSingleProductLoading, product } = useSingleProduct()
+  const { setCartNumber } = useCartNumber()
+
+  const cartAddNumber = () => {
+    setCartNumber((prev) => prev + 1)
+  }
 
   if (isSingleProductLoading) return <Loader />
   if (!product) return <Empty sourceName="product" />
@@ -56,7 +62,10 @@ const SingleProduct: React.FC = () => {
               </div>
             </div>
             <div className="flex flex-col items-end">
-              <button className="px-3 py-2 bg-emerald-500 rounded-lg w-32 text-textColor text-lg font-semibold shadow-2xl border-2 border-green-900">
+              <button
+                onClick={cartAddNumber}
+                className="px-3 py-2 bg-emerald-500 rounded-lg w-32 text-textColor text-lg font-semibold shadow-2xl border-2 border-green-900"
+              >
                 Add To Cart
               </button>
             </div>
