@@ -86,7 +86,7 @@ const UpdateUser: React.FC<UpdateUserProps> = ({
             <div className="relative max-w-sm lg:max-w-xl w-full h-[80%] bg-secondaryBg p-4 rounded-md shadow-lg mt-10">
               <button
                 onClick={() => onOpen(false)}
-                className="absolute -top-9 right-0 w-8 h-8 bg-slate-100 p-1 rounded-full text-black font-bold shadow-xl z-[60]"
+                className="absolute -top-9 right-0 w-8 h-8 bg-slate-100 p-1 rounded-full text-black font-bold shadow-xl z-30"
               >
                 X
               </button>
