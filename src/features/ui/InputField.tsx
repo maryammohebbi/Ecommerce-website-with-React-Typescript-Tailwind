@@ -10,6 +10,14 @@ interface InputFieldProps {
   errors: any
   validationSchema: {
     required: string
+    minLength?: {
+      value: number
+      message: string
+    }
+    pattern?: {
+      value: RegExp
+      message: string
+    }
   }
 }
 
