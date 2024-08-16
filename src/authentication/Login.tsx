@@ -19,7 +19,9 @@ const Login: React.FC = ({}) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<Inputs>()
+  } = useForm<Inputs>({
+    defaultValues: { userName: 'donero', password: 'ewedon' },
+  })
 
   const { isPending, mutateAsync } = useMutation({
     mutationFn: getLoginInfo,
