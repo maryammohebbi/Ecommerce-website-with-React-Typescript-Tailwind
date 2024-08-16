@@ -82,8 +82,8 @@ const UpdateUser: React.FC<UpdateUserProps> = ({
       {open && (
         <>
           <div className="fixed top-0 left-0 w-full h-full bg-slate-600 opacity-50 z-10"></div>
-          <div className="fixed inset-0 flex items-center justify-center z-20 mt-10">
-            <div className="relative max-w-sm lg:max-w-xl w-full h-[80%] bg-secondaryBg p-4 rounded-md shadow-lg">
+          <div className="fixed inset-0 flex items-center justify-center z-20 ">
+            <div className="relative max-w-sm lg:max-w-xl w-full h-[80%] bg-secondaryBg p-4 rounded-md shadow-lg mt-10">
               <button
                 onClick={() => onOpen(false)}
                 className="absolute -top-9 right-0 w-8 h-8 bg-slate-100 p-1 rounded-full text-black font-bold shadow-xl z-[60]"
