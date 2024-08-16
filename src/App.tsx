@@ -6,37 +6,15 @@ import AppLayout from './features/ui/AppLayout'
 import { DarkModeProvider } from './context/DarkModeContext'
 import SingleProduct from './features/products/SingleProduct'
 import Auth from './pages/Auth'
-import toast, { Toaster } from 'react-hot-toast'
+import { Toaster } from 'react-hot-toast'
 import Cart from './pages/Cart'
-import { CartNumberProvider, useCartNumber } from './context/CartNumberContext'
+import { CartNumberProvider } from './context/CartNumberContext'
 import Profile from './features/user/Profile'
 import NotFound404 from './features/ui/NotFound404'
-import { useEffect } from 'react'
-import { getCartsApi } from './features/services/cartService'
 
 const queryClient = new QueryClient()
 
 function App() {
-  const { setCartNumber } = useCartNumber()
-
-  useEffect(() => {
-    const fetchAndSetCartNumber = async () => {
-      try {
-        const response = await getCartsApi()
-        const carts = response.data
-        const cartCount = carts.reduce(
-          (acc, cart) => acc + cart.products.length,
-          0
-        )
-        setCartNumber(cartCount)
-      } catch (error) {
-        toast.error('Failed to fetch carts')
-      }
-    }
-
-    fetchAndSetCartNumber()
-  }, [setCartNumber])
-
   return (
     <DarkModeProvider>
       <CartNumberProvider>
