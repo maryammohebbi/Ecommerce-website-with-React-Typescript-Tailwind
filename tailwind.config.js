@@ -14,14 +14,23 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: withOpacity('--color-primary'),
-        secondary: withOpacity('--color-secondary'),
-        textColor: withOpacity('--color-textColor'),
-        secondaryBg: withOpacity('--color-secondaryBg'),
-        success: withOpacity('--color-success'),
-        warning: withOpacity('--color-warning'),
-        error: withOpacity('--color-error'),
-        bgMenu: withOpacity('--color-bgMenu'),
+        primary: {
+          0: withOpacity('--color-primary'),
+          100: withOpacity('--color-primary-100'),
+        },
+        secondary:{
+          0:withOpacity('--color-secondary'),
+          100:withOpacity('--color-secondary-100')
+        }
+        // primary: withOpacity('--color-primary'),
+        // 100: withOpacity('--color-primary-100'),
+        // secondary: withOpacity('--color-secondary'),
+        // textColor: withOpacity('--color-textColor'),
+        // secondaryBg: withOpacity('--color-secondaryBg'),
+        // success: withOpacity('--color-success'),
+        // warning: withOpacity('--color-warning'),
+        // error: withOpacity('--color-error'),
+        // bgMenu: withOpacity('--color-bgMenu'),
       },
       container: {
         padding: '1rem',

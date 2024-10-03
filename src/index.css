@@ -1,16 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@layer components {
+  .menu-font {
+    @apply text-[22px] font-medium;
+  }
+  .btn {
+    @apply flex justify-center items-center w-[134px] h-[62px] bg-secondary-100;
+  }
+  .btn-primary {
+    @apply flex justify-center items-center w-[80px] h-[40px] bg-secondary-100;
+  }
+}
 @layer base {
   :root {
     &,
     &.light-mode {
-      --background-app: #fbfafe;
-      --color-primary: #b00fdc;
-      --color-secondary: #6750a4;
-      --color-textColor: #1c1a27;
-      --color-secondaryBg: #625b71;
+      --color-primary: #c2c8da;
+      --color-primary-100: #e6c744;
+      --color-secondary: #ffffff;
+      --color-secondary-100: #000000;
+
       --color-success: #36bc4c;
       --color-warning: #ec5454;
       --color-error: #f92c2c;
@@ -18,21 +29,30 @@
     }
     /* &, */
     &.dark-mode {
-      --background-app: #1c1a27;
+      /* --background-app: #1c1a27;
       --color-textColor: #edebed;
       --color-secondaryBg: #716781;
       --color-secondary: #d0bcff;
-      --color-bgMenu: #1c1a27;
+      --color-bgMenu: #1c1a27; */
     }
   }
 }
 
 body {
-  font-family: 'Dosis', sans-serif;
-  background-color: var(--background-app);
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--color-secondary);
 }
 
 /* .userContainer:hover .dropDown {
   display: flex;
   transition: all 0.5s;
 } */
+
+.btn-primary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 40px;
+  background-color: var(--color-secondary-100);
+}
