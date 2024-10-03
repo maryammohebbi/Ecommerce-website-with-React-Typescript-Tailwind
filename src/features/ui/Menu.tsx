@@ -1,4 +1,4 @@
-import React from 'react'
+import LogoTheme from '../ui/LogoTheme'
 import DarkModeToggle from './DarkModeToggle'
 import CartIcon from './CartIcon'
 import LoginIcon from './LoginIcon'
@@ -9,26 +9,31 @@ type Props = {}
 
 const Menu: React.FC<Props> = ({}) => {
   return (
-    <div className="bg-bgMenu border-b-2 border-t-2 border-secondary sticky top-0 z-50">
-      <div className="container flex justify-between p-2 text-textColor">
+    <div className="flex flex-col gap-y-4 xl:flex-row justify-between w-full  items-center py-12 px-24 ">
+      <LogoTheme />
+      <div className="flex xl:gap-x-[65px] md:gap-x-16 gap-x-8  items-center justify-between transition-all  ">
         <div>
-          <Link to="/">Home</Link>
+          <Link to="/" className="md:menu-font">
+            Home
+          </Link>
         </div>
 
         <div>
-          <LoginIcon />
+          <h1 className="md:menu-font">search</h1>
         </div>
-        <div>search</div>
         <Tooltip title="Theme" placement="bottom" arrow>
           <div>
             <DarkModeToggle />
           </div>
         </Tooltip>
         <Tooltip title="Cart" placement="bottom" arrow>
-          <div className="text-textColor">
+          <div>
             <CartIcon />
           </div>
         </Tooltip>
+        <div className="sm:btn btn-primary rounded-[7px]">
+          <LoginIcon />
+        </div>
       </div>
     </div>
   )
