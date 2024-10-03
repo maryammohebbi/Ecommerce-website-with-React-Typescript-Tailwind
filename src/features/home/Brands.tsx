@@ -1,36 +1,34 @@
-import React from 'react'
-import { logos } from './data'
-import Title from '../ui/Title'
-import { Swiper, SwiperSlide } from 'swiper/react'
+import newArrivals from '../../../public/newArrivals.png'
+import { HiArrowRight } from 'react-icons/hi'
 import 'swiper/css'
 import 'swiper/css/navigation'
-import { Autoplay, Navigation } from 'swiper/modules'
+import { logos } from './data'
+import { Link } from 'react-router-dom'
 
 const Brands: React.FC = () => {
   return (
-    <div className="container mb-36">
-      <Title title="Brands" />
-      <Swiper
-        modules={[Navigation, Autoplay]}
-        slidesPerView={5}
-        spaceBetween={30}
-        navigation
-        autoplay
-        className="w-full h-36 cursor-pointer"
-      >
+    <div className="container mt-12 px-16">
+      <img src={newArrivals} alt="" />
+      <div className=" mt-9 flex flex-col lg:flex-row w-full justify-between gap-x-[70px] items-center gap-y-[90px]">
         {logos.map((logo) => (
-          <SwiperSlide
-            key={logo.id}
-            className="flex items-center justify-center w-12 h-full p-4 border-2 border-slate-400 bg-secondaryBg rounded-md shadow-2xl"
-          >
+          <div key={logo.id} className="flex flex-col  gap-y-3 ">
             <img
               src={logo.imgUrl}
               alt={logo.title}
-              className="h-full w-full object-contain"
+              className="w-full lg:w-full  object-contain  lg:h-[400px] h-[500px] rounded-md"
             />
-          </SwiperSlide>
+            <div className="flex w-full justify-between">
+              <div className="flex flex-col gap-y-7">
+                <p className="text-secondary-100">{logo.title}</p>
+                <span className="text-primary-0">Explore Now!</span>
+              </div>
+              <Link to={'/products'}>
+                <HiArrowRight />
+              </Link>
+            </div>
+          </div>
         ))}
-      </Swiper>
+      </div>
     </div>
   )
 }

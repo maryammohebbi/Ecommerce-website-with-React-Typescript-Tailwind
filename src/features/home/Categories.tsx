@@ -1,11 +1,9 @@
 import React from 'react'
 import CategoryContainer from '../categories/CategoryContainer'
-import Title from '../ui/Title'
 
 const Categories: React.FC = () => {
   return (
-    <div className="container p-5 flex flex-col items-center ">
-      <Title title="Product Categories" />
+    <div className=" my-12 w-full bg-primary-100 flex flex-col items-center justify-between h-[186px]  ">
       <CategoryContainer />
     </div>
   )

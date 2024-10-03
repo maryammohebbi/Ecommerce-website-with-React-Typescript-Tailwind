@@ -2,15 +2,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer components {
   .menu-font {
-    @apply text-[22px] font-medium;
+    @apply text-[22px] font-medium text-secondary-100;
   }
   .btn {
-    @apply flex justify-center items-center w-[134px] h-[62px] bg-secondary-100;
+    @apply flex justify-center items-center w-[134px] h-[62px] bg-secondary-100 rounded-[7px];
   }
   .btn-primary {
     @apply flex justify-center items-center w-[80px] h-[40px] bg-secondary-100;
+  }
+  .banner-base {
+    @apply w-[87%] min-w-[1024px] h-[852px]   px-16 mx-auto    rounded-[59px] lg:flex hidden  justify-between transition-all duration-300;
   }
 }
 @layer base {
@@ -21,6 +25,7 @@
       --color-primary-100: #e6c744;
       --color-secondary: #ffffff;
       --color-secondary-100: #000000;
+      --color-secondary-200: #f4f6f5;
 
       --color-success: #36bc4c;
       --color-warning: #ec5454;
@@ -29,6 +34,9 @@
     }
     /* &, */
     &.dark-mode {
+      --color-secondary: rgb(45, 52, 54);
+      --color-secondary-100: #ffffff;
+      --color-secondary-200:rgb(178, 190, 195)
       /* --background-app: #1c1a27;
       --color-textColor: #edebed;
       --color-secondaryBg: #716781;

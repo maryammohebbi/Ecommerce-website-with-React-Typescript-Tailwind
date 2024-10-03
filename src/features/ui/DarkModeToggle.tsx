@@ -9,9 +9,9 @@ const DarkModeToggle: React.FC = () => {
     <div>
       <button className="" onClick={() => setIsDarkMode(!isDarkMode)}>
         {isDarkMode ? (
-          <GiUbisoftSun className="w-8 h-8" />
+          <GiUbisoftSun className="w-8 h-8 menu-font" />
         ) : (
-          <PiMoonStarsLight className="w-8 h-8" />
+          <PiMoonStarsLight className="w-8 h-8 menu-font" />
         )}
       </button>
     </div>
