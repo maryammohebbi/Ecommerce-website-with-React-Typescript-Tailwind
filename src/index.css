@@ -16,6 +16,9 @@
   .banner-base {
     @apply w-[87%] min-w-[1024px] h-[852px]   px-16 mx-auto    rounded-[59px] lg:flex hidden  justify-between transition-all duration-300;
   }
+  .loader-style {
+    @apply gap-x-4 flex flex-col justify-center items-center  border p-8 rounded-lg shadow-md;
+  }
 }
 @layer base {
   :root {
@@ -23,6 +26,7 @@
     &.light-mode {
       --color-primary: #c2c8da;
       --color-primary-100: #e6c744;
+      --color-primary-200:rgb(87, 101, 116);
       --color-secondary: #ffffff;
       --color-secondary-100: #000000;
       --color-secondary-200: #f4f6f5;
@@ -36,12 +40,7 @@
     &.dark-mode {
       --color-secondary: rgb(45, 52, 54);
       --color-secondary-100: #ffffff;
-      --color-secondary-200:rgb(178, 190, 195)
-      /* --background-app: #1c1a27;
-      --color-textColor: #edebed;
-      --color-secondaryBg: #716781;
-      --color-secondary: #d0bcff;
-      --color-bgMenu: #1c1a27; */
+      --color-secondary-200: rgb(178, 190, 195);
     }
   }
 }
@@ -51,11 +50,6 @@ body {
   background-color: var(--color-secondary);
 }
 
-/* .userContainer:hover .dropDown {
-  display: flex;
-  transition: all 0.5s;
-} */
-
 .btn-primary {
   display: flex;
   justify-content: center;
@@ -63,4 +57,97 @@ body {
   width: 80px;
   height: 40px;
   background-color: var(--color-secondary-100);
+}
+@layer utilities {
+  .skeleton-header,
+  .skeleton-footer,
+  .skeleton-image {
+    background: linear-gradient(90deg, #dadada 25%, #f1f1f1 50%, #e9e8e8 75%);
+    background-size: 200% 100%;
+    animation: loading 1s infinite;
+  }
+
+  .skeleton-image {
+    height: 250px;
+    border-radius: 16px;
+    width: 220px;
+    padding: 30px;
+  }
+
+  .skeleton-body {
+    flex-grow: 1;
+    padding: 20px;
+  }
+
+  .skeleton-footer {
+    margin-bottom: 20px;
+  }
+
+  .skeleton-line {
+    border-radius: 16px;
+    height: 20px;
+    margin-bottom: 10px;
+    background: linear-gradient(90deg, #dbdbdb 25%, #f8f8f8 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1s infinite;
+  }
+
+  .card-bg .skeleton-header {
+    margin-top: auto;
+    margin-bottom: 60px;
+    height: 120px;
+  }
+
+  @keyframes loading {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+
+  .cards {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    column-gap: 20px;
+  }
+
+  .skeleton-headers {
+    width: 290px;
+
+    height: 60px;
+    background: linear-gradient(90deg, #dadada 25%, #f1f1f1 50%, #e9e8e8 75%);
+    background-size: 200% 100%;
+    animation: loader 1s infinite;
+  }
+  .skeleton-footers,
+  .skeleton-images {
+    height: 500px;
+    width: 500px;
+    animation: identity 4s linear infinite;
+  }
+  @keyframes identity {
+    0% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    50% {
+      border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    }
+    100% {
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    }
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+  .title-shadow {
+    text-shadow: 2px 0 #fff, -2px 0 #fff, 0 2px #fff, 0 -2px #fff, 1px 1px #fff,
+      -1px -1px #fff, 1px -1px #fff, -1px 1px #fff;
+  }
 }

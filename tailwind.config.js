@@ -18,6 +18,7 @@ export default {
         primary: {
           0: withOpacity('--color-primary'),
           100: withOpacity('--color-primary-100'),
+          200:withOpacity('--color-primary-200')
         },
         secondary: {
           0: withOpacity('--color-secondary'),
