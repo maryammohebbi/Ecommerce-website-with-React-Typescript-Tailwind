@@ -12,16 +12,18 @@ function withOpacity(variableName) {
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
+   
     extend: {
       colors: {
         primary: {
           0: withOpacity('--color-primary'),
           100: withOpacity('--color-primary-100'),
         },
-        secondary:{
-          0:withOpacity('--color-secondary'),
-          100:withOpacity('--color-secondary-100')
-        }
+        secondary: {
+          0: withOpacity('--color-secondary'),
+          100: withOpacity('--color-secondary-100'),
+          200: withOpacity('--color-secondary-200'),
+        },
         // primary: withOpacity('--color-primary'),
         // 100: withOpacity('--color-primary-100'),
         // secondary: withOpacity('--color-secondary'),
@@ -32,6 +34,7 @@ export default {
         // error: withOpacity('--color-error'),
         // bgMenu: withOpacity('--color-bgMenu'),
       },
+
       container: {
         padding: '1rem',
         center: true,

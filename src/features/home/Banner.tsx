@@ -11,7 +11,7 @@ type Props = {
   order:string
 }
 
-const Banner: React.FC<Props> = ({ description, banner, image,bannerColor,order }) => {
+const Banner: React.FC<Props> = ({ description, banner, image, bannerColor, order }) => {
   return (
     <div className={`banner-base mt-8 ${bannerColor}`}>
       <div className={`flex flex-col justify-around py-8 ${order}`}>
@@ -21,7 +21,6 @@ const Banner: React.FC<Props> = ({ description, banner, image,bannerColor,order 
             <img src={banner} alt="image" className="z-[1000] object-cover" />
             <div className="w-[370px] h-[80px] bg-primary-100 mt-[-168px] z-0 xl:mt-[-195px] rotate-[-3deg]  mr-3 transition-all"></div>
           </div>
-          
         </div>
         <div className="mt-[40px]">
           <p className="text-secondary-100 text-8 font-light">{description}</p>
@@ -33,7 +32,6 @@ const Banner: React.FC<Props> = ({ description, banner, image,bannerColor,order 
 
       <img
         src={image}
-        
         alt="image"
         className="object-contain w-[566px]   mt-[92px]   "
       />

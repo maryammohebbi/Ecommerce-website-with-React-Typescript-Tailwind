@@ -12,7 +12,7 @@ const CategoryContainer: React.FC = () => {
   if (!categories) return <Empty sourceName="category" />
 
   return (
-    <div>
+    <div className='w-full'>
       <Category categories={categories} />
     </div>
   )
