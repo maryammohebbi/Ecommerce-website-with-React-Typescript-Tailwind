@@ -18,15 +18,15 @@ const SingleProduct: React.FC = () => {
   return (
     <div className="container p-5">
       <div className="flex flex-col">
-        <div className="w-full h-[80%] flex flex-col lg:flex-row gap-y-4 lg:gap-x-4">
-          <div className="lg:w-2/5 lg:h-[36rem] bg-white border-2 border-primary rounded-lg p-2 shadow-2xl">
+        <div className="w-full h-[80%] flex flex-col lg:flex-row gap-y-4 lg:gap-x-4 p-4">
+          <div className="lg:w-2/5 lg:h-[36rem] bg-primary-200 border-2 border-primary rounded-lg   shadow-lg p-8 ">
             <img
               className="w-full h-full object-scale-down rounded-lg"
               src={product.image}
               alt={product.title}
             />
           </div>
-          <div className="lg:w-3/5 lg:h-[36rem] flex flex-col gap-y-20 border-2 border-primary rounded-lg p-5 shadow-2xl">
+          <div className="lg:w-3/5 lg:h-[36rem] flex flex-col gap-y-4 border-2 border-primary rounded-lg shadow-2xl p-8">
             <div className="flex flex-col gap-y-10">
               <div>
                 <span className="text-textColor text-lg font-bold">
@@ -64,7 +64,7 @@ const SingleProduct: React.FC = () => {
             <div className="flex flex-col items-end">
               <button
                 onClick={cartAddNumber}
-                className="px-3 py-2 bg-emerald-500 rounded-lg w-32 text-textColor text-lg font-semibold shadow-2xl border-2 border-green-900"
+                className="btn text-secondary-0 my-8"
               >
                 Add To Cart
               </button>

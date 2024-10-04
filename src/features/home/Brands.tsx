@@ -23,7 +23,7 @@ const Brands: React.FC = () => {
                 <span className="text-primary-0">Explore Now!</span>
               </div>
               <Link to={'/products'}>
-                <HiArrowRight />
+                <HiArrowRight className='text-secondary-100' />
               </Link>
             </div>
           </div>
