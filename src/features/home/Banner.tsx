@@ -13,7 +13,7 @@ type Props = {
 
 const Banner: React.FC<Props> = ({ description, banner, image, bannerColor, order }) => {
   return (
-    <div className={`banner-base mt-8 ${bannerColor}`}>
+    <div className={`banner-base mt-8 ${bannerColor} shadow-lg shadow-secondary-100`}>
       <div className={`flex flex-col justify-around py-8 ${order}`}>
         <div>
           <div className="h-full flex justify-between flex-col transition-all  ">
@@ -26,7 +26,7 @@ const Banner: React.FC<Props> = ({ description, banner, image, bannerColor, orde
           <p className="text-secondary-100 text-8 font-light">{description}</p>
         </div>
         <Link to="/products ">
-          <button className="  btn text-secondary-0">SHOP NOW</button>
+          <button className="  btn text-secondary-0 font-bold shadow-md border">SHOP NOW</button>
         </Link>
       </div>
 
