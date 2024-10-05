@@ -17,9 +17,9 @@ const Banner: React.FC<Props> = ({ description, banner, image, bannerColor, orde
       <div className={`flex flex-col justify-around py-8 ${order}`}>
         <div>
           <div className="h-full flex justify-between flex-col transition-all  ">
-            <div className="w-[280px] h-[85px]  bg-secondary-0 mb-[-76px] ml-[-10px] rotate-[-3deg] transition-all"></div>
+            <div className="w-[280px] h-[85px]  bg-secondary-0 mb-[-76px] ml-[-10px] rotate-banner"></div>
             <img src={banner} alt="image" className="z-[1000] object-cover" />
-            <div className="w-[370px] h-[80px] bg-primary-100 mt-[-168px] z-0 xl:mt-[-195px] rotate-[-3deg]  mr-3 transition-all"></div>
+            <div className="w-[370px] h-[80px] bg-primary-100 mt-[-168px] z-0 xl:mt-[-195px] mr-3 rotate-banner "></div>
           </div>
         </div>
         <div className="mt-[40px]">

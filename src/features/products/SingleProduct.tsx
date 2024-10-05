@@ -2,6 +2,7 @@ import React from 'react'
 import useSingleProduct from './useSingleProduct'
 import Loader from '../ui/Loader'
 import Empty from '../ui/Empty'
+import truncateText from '../../pages/utils/textSlicer'
 // import { useCartNumber } from '../../context/CartNumberContext'
 
 const SingleProduct: React.FC = () => {
@@ -27,13 +28,13 @@ const SingleProduct: React.FC = () => {
             />
           </div>
           <div className="lg:w-3/5 lg:h-[36rem] flex flex-col gap-y-4 border-2 border-primary rounded-lg shadow-2xl p-8">
-            <div className="flex flex-col gap-y-10">
+            <div className="flex flex-col  gap-y-4 md:gap-20">
               <div>
                 <span className="text-textColor text-lg font-bold">
                   Title:{' '}
                 </span>
                 <span className="text-secondary text-lg font-semibold">
-                  {product.title}
+                  {truncateText(product.title, 20)}
                 </span>
               </div>
               <div>
@@ -49,7 +50,7 @@ const SingleProduct: React.FC = () => {
                   Description:
                 </span>
                 <span className="text-secondary text-lg font-semibold">
-                  {product.description}
+                  {truncateText(product.description, 60)}
                 </span>
               </div>
               <div>

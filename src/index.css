@@ -19,6 +19,12 @@
   .loader-style {
     @apply gap-x-4 flex flex-col justify-center items-center  border p-8 rounded-lg shadow-md;
   }
+  .rotate-banner {
+    @apply rotate-[-3deg] transition-all;
+  }
+  .vertical-nav {
+    @apply bg-primary-0 shadow-md border rounded-e-full w-14 h-14 flex justify-center items-center rotate-180 hover:p-12 transition-all duration-200; 
+  }
 }
 @layer base {
   :root {
@@ -26,7 +32,7 @@
     &.light-mode {
       --color-primary: #c2c8da;
       --color-primary-100: #e6c744;
-      --color-primary-200:rgb(87, 101, 116);
+      --color-primary-200: rgb(87, 101, 116);
       --color-secondary: #ffffff;
       --color-secondary-100: #000000;
       --color-secondary-200: #f4f6f5;
@@ -41,6 +47,7 @@
       --color-secondary: rgb(45, 52, 54);
       --color-secondary-100: #ffffff;
       --color-secondary-200: rgb(178, 190, 195);
+      --color-primary: rgb(87, 101, 116);
     }
   }
 }
@@ -59,6 +66,12 @@ body {
   background-color: var(--color-secondary-100);
 }
 @layer utilities {
+  .grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 10px;
+  }
   .skeleton-header,
   .skeleton-footer,
   .skeleton-image {

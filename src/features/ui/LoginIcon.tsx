@@ -37,7 +37,7 @@ const LoginIcon: React.FC = ({}) => {
       ) : (
         <Link to="/auth">
           <div className="text-textColor flex gap-x-1 justify-center items-center">
-            <span className="text-secondary-0 text-xl">Login</span>
+            <span className="text-secondary-0 text-sm md:text-xl">Login</span>
             <IoMdLogIn className="w-5 h-5 text-secondary-0" />
           </div>
         </Link>
