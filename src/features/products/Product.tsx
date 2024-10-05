@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import type { Product } from './useProducts'
 import truncateText from '../../utils/textSlicer'
+import { scrollToTop } from '../../utils/topOfPage'
 
 interface ProductProps {
   product: Product
@@ -9,7 +10,7 @@ interface ProductProps {
 
 const ProductCard: React.FC<ProductProps> = ({ product }) => {
   return (
-    <Link to={`${product.id}`}>
+    <Link to={`${product.id}`} onClick={scrollToTop}>
       <div className="w-full h-[30rem] bg-secondaryBg rounded-lg p-6 shadow-md border bg-primary-0 hover:scale-105 transition-transform duration-300">
         <div className="w-[90%] h-[80%] p-2 bg-white container mx-auto rounded-lg shadow-2xl mb-2">
           <img
