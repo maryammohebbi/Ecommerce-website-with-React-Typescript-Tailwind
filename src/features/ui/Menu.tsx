@@ -9,29 +9,29 @@ type Props = {}
 
 const Menu: React.FC<Props> = ({}) => {
   return (
-    <div className="flex flex-col gap-y-4 xl:flex-row justify-between w-full  items-center py-12 px-24 ">
+    <div className="flex flex-col gap-y-6 xl:flex-row justify-between w-full  items-center md:px-24 md:py-8 p-8">
       <LogoTheme />
-      <div className="flex xl:gap-x-[65px] md:gap-x-16 gap-x-8  items-center justify-between transition-all  ">
+      <div className="flex xl:gap-x-[65px] md:gap-x-16 gap-x-8  items-center justify-between transition-all ">
         <div>
-          <Link to="/" className="md:menu-font">
+          <Link to="/" className=" text-sm text-secondary-100 md:menu-font">
             Home
           </Link>
         </div>
 
         <div>
-          <h1 className="md:menu-font">search</h1>
+          <h1 className=" text-sm text-secondary-100 md:menu-font">search</h1>
         </div>
         <Tooltip title="Theme" placement="bottom" arrow>
           <div>
-            <DarkModeToggle />
+            <DarkModeToggle rotate='rotate-0' />
           </div>
         </Tooltip>
         <Tooltip title="Cart" placement="bottom" arrow>
           <div>
-            <CartIcon />
+            <CartIcon  rotate='rotate-0'/>
           </div>
         </Tooltip>
-        <div className="sm:btn btn-primary rounded-[7px]">
+        <div className="sm:btn btn-primary rounded-[7px] ">
           <LoginIcon />
         </div>
       </div>

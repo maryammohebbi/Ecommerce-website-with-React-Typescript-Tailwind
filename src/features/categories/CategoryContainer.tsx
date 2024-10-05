@@ -2,17 +2,15 @@ import React from 'react'
 
 import useCategories from './useCategories'
 import Category from './Category'
-import Loader from '../ui/Loader'
 import Empty from '../ui/Empty'
 
 const CategoryContainer: React.FC = () => {
-  const { isCategoriesLoading, categories } = useCategories()
+  const { categories } = useCategories()
 
-  if (isCategoriesLoading) return <Loader />
   if (!categories) return <Empty sourceName="category" />
 
   return (
-    <div className='w-full'>
+    <div className="w-full">
       <Category categories={categories} />
     </div>
   )
