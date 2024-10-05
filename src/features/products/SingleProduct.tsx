@@ -2,7 +2,7 @@ import React from 'react'
 import useSingleProduct from './useSingleProduct'
 import Loader from '../ui/Loader'
 import Empty from '../ui/Empty'
-import truncateText from '../../pages/utils/textSlicer'
+import truncateText from '../../utils/textSlicer'
 // import { useCartNumber } from '../../context/CartNumberContext'
 
 const SingleProduct: React.FC = () => {

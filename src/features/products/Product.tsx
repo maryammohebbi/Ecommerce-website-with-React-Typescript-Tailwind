@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import type { Product } from './useProducts'
-import truncateText from '../../pages/utils/textSlicer'
+import truncateText from '../../utils/textSlicer'
 
 interface ProductProps {
-  product: Product;
+  product: Product
 }
 
 const ProductCard: React.FC<ProductProps> = ({ product }) => {
@@ -13,7 +13,7 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
       <div className="w-full h-[30rem] bg-secondaryBg rounded-lg p-6 shadow-md border bg-primary-0 hover:scale-105 transition-transform duration-300">
         <div className="w-[90%] h-[80%] p-2 bg-white container mx-auto rounded-lg shadow-2xl mb-2">
           <img
-            src={product.image || '/fallback-image.jpg'} 
+            src={product.image || '/fallback-image.jpg'}
             alt={product.title || 'Product Image'}
             className="w-full h-full object-scale-down"
           />
@@ -25,7 +25,10 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
           <span className="text-xl font-semibold title-shadow">Price:</span>
           <span className="text-2xl font-semibold text-secondary-100">
             {product.price}
-            <span className="text-secondary-100 font-semibold title-shadow "> $</span>
+            <span className="text-secondary-100 font-semibold title-shadow ">
+              {' '}
+              $
+            </span>
           </span>
         </div>
       </div>
