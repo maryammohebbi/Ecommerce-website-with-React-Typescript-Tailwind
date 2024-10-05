@@ -5,6 +5,7 @@ import { HiOutlineSearch } from 'react-icons/hi'
 import DarkModeToggle from './DarkModeToggle'
 import CartIcon from './CartIcon'
 import { Fade } from 'react-awesome-reveal'
+import { scrollToTop } from '../../utils/topOfPage'
 
 type Props = {}
 const VerticalNav: React.FC<Props> = () => {
@@ -12,7 +13,7 @@ const VerticalNav: React.FC<Props> = () => {
     <div className="flex flex-col fixed right-0 gap-y-8 h-full justify-start items-start z-[1000]">
       <Fade direction="right">
         <div className="vertical-nav">
-          <Link to="/" className="md:menu-font  ">
+          <Link to="/" className="md:menu-font" onClick={scrollToTop}>
             <HiOutlineHome className="w-6  h-6 rotate-180 " />
           </Link>
         </div>
@@ -29,7 +30,7 @@ const VerticalNav: React.FC<Props> = () => {
           <DarkModeToggle rotate=" rotate-180" />
         </div>
       </Fade>
-      <Fade direction="right">
+      <Fade direction="right" >
         {' '}
         <div className="vertical-nav">
           <CartIcon rotate="rotate-180" />

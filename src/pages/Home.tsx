@@ -13,6 +13,7 @@ const Home: React.FC<Props> = ({}) => {
   return (
     <>
       <Banner
+        borderColor="border-primary-100"
         order="order-0"
         bannerColor="bg-secondary-200"
         image={daghter}
@@ -22,6 +23,7 @@ const Home: React.FC<Props> = ({}) => {
       <Categories />
       <Brands />
       <Banner
+        borderColor="border-seondary-0"
         order="order-1"
         bannerColor="bg-primary-100"
         image={seconddaughter}
