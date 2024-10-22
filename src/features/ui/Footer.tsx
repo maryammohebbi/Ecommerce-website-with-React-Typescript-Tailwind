@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
           <p className="font-bold text-secondary-0 border-b-2 text-center mb-8 p-2">
             Shopping Guide
           </p>
-          <div className="flex flex-col gap-y-2 text-secondary-100 font-bold">
+          <div className="flex flex-col gap-y-2 text-black font-bold">
             <a href="#">How To Order</a>
             <a href="#">Posting Process</a>
             <a href="#">Payment Methods</a>
