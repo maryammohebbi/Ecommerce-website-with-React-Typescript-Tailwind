@@ -12,12 +12,12 @@ const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   const { scrollBoolean } = useScroll(100)
 
   return (
-    <>
-    <Menu /> 
-      {scrollBoolean ?  <VerticalNav /> : null}
+    <div className="h-screen">
+      <Menu />
+      {scrollBoolean ? <VerticalNav /> : null}
       {children}
       <Footer />
-    </>
+    </div>
   )
 }
 

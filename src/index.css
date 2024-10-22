@@ -23,7 +23,7 @@
     @apply rotate-[-3deg] transition-all;
   }
   .vertical-nav {
-    @apply bg-primary-0 shadow-md border rounded-e-full w-14 h-14 flex justify-center items-center rotate-180 hover:p-12 transition-all duration-200; 
+    @apply bg-primary-0 shadow-md border rounded-e-full w-14 h-14 flex justify-center items-center rotate-180 hover:p-12 transition-all duration-200;
   }
 }
 @layer base {
@@ -36,6 +36,7 @@
       --color-secondary: #ffffff;
       --color-secondary-100: #000000;
       --color-secondary-200: #f4f6f5;
+      --color-textColor: #0f1012;
 
       --color-success: #36bc4c;
       --color-warning: #ec5454;
@@ -48,6 +49,7 @@
       --color-secondary-100: #ffffff;
       --color-secondary-200: rgb(178, 190, 195);
       --color-primary: rgb(87, 101, 116);
+      --color-textColor: #dae2f4;
     }
   }
 }

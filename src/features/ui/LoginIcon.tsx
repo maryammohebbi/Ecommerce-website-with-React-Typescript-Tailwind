@@ -13,13 +13,13 @@ const LoginIcon: React.FC = ({}) => {
     <div>
       {user ? (
         <div className="relative group">
-          <span className="cursor-pointer flex items-center gap-x-1 text-secondary-0  text-[10px] sm:text-[15px] transition-all  md:text-[20px]">
-            <CgProfile className="w-6 h-6 text-secondary-0 " /> Hi,{' '}
+          <span className="cursor-pointer flex items-center gap-x-1 text-secondary-0 text-[10px] sm:text-[15px] transition-all md:text-[20px]">
+            <CgProfile className="w-5 h-5 text-secondary-0 " /> Hi,{' '}
             {user.name.firstname} !
           </span>
           <div
             className="opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-500 
-            absolute top-full -left-3 w-28 flex flex-col gap-y-2 p-2 border-2 border-secondary rounded bg-secondaryBg text-black"
+            absolute top-9 -left-3 w-32 flex flex-col gap-y-2 p-2 border-2 border-secondary rounded bg-gray-300 text-black"
           >
             <Link to="/profile">Your Profile</Link>
             <button
@@ -30,7 +30,7 @@ const LoginIcon: React.FC = ({}) => {
                 toast(`See you next time, ${user.name.firstname} 👋`)
               }}
             >
-              Logout <IoIosLogOut className="sm:w-5 sm:h-5 w-2 h-2  " />
+              Logout <IoIosLogOut className="sm:w-5 sm:h-5 w-2 h-2 " />
             </button>
           </div>
         </div>

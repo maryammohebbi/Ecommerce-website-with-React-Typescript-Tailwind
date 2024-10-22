@@ -29,7 +29,7 @@ const Home: React.FC<Props> = ({}) => {
         image={seconddaughter}
         banner={payday}
         description="Spend minimal $100 get 30% off
-voucher code for your next purchase"
+        voucher code for your next purchase"
       />
     </>
   )

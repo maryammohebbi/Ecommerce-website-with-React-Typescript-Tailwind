@@ -70,7 +70,7 @@ const Profile: React.FC = () => {
 
         <button
           onClick={() => setOpen(true)}
-          className="px-4 py-2 bg-purple-400 rounded-md mx-auto block"
+          className="px-6 py-3 bg-purple-500 hover:bg-purple-600 duration-500 transition-all rounded-lg mx-auto block shadow-2xl border-2 border-secondary"
         >
           EDIT PROFILE
         </button>
