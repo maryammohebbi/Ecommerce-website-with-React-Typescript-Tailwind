@@ -28,7 +28,7 @@ export default {
         // 100: withOpacity('--color-primary-100'),
         // secondary: withOpacity('--color-secondary'),
         textColor: withOpacity('--color-textColor'),
-        // secondaryBg: withOpacity('--color-secondaryBg'),
+        secondaryBg: withOpacity('--color-secondaryBg'),
         // success: withOpacity('--color-success'),
         // warning: withOpacity('--color-warning'),
         // error: withOpacity('--color-error'),

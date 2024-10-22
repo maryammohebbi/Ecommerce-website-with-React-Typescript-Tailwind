@@ -37,6 +37,7 @@
       --color-secondary-100: #000000;
       --color-secondary-200: #f4f6f5;
       --color-textColor: #0f1012;
+      --color-secondaryBg: #5f636a;
 
       --color-success: #36bc4c;
       --color-warning: #ec5454;
@@ -50,6 +51,7 @@
       --color-secondary-200: rgb(178, 190, 195);
       --color-primary: rgb(87, 101, 116);
       --color-textColor: #dae2f4;
+      --color-secondaryBg: #16190e;
     }
   }
 }
