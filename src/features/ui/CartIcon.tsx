@@ -12,7 +12,9 @@ const CartIcon: React.FC<Prop> = ({ rotate }) => {
     <Link to="checkout/cart" onClick={scrollToTop}>
       <button className="relative p-1">
         <BsCart4 className={` w-6 h-6 menu-font ${rotate} `} />
-        <span className={`rounded-full  bg-warning w-5 h-5 menu-font absolute top-4 right-6 text-sm flex justify-center items-center ${rotate}`}>
+        <span
+          className={`rounded-full  bg-warning w-5 h-5 menu-font absolute -top-2 left-5 text-sm flex justify-center items-center ${rotate}`}
+        >
           {cartNumber}
         </span>
       </button>
