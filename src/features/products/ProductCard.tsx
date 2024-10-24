@@ -9,9 +9,11 @@ interface ProductProps {
 }
 
 const ProductCard: React.FC<ProductProps> = ({ product }) => {
+  const categorySlug = product.category.toLowerCase() // Ensure the category matches the URL structure
+
   return (
-    <Link to={`${product.id}`} onClick={scrollToTop}>
-      <div className="w-full h-[30rem] bg-secondaryBg rounded-lg p-6 shadow-md border bg-primary-0 hover:scale-105 transition-transform duration-300">
+    <Link to={`/products/${categorySlug}/${product.id}`} onClick={scrollToTop}>
+      <div className="w-full h-[30rem] rounded-lg p-6 shadow-md border bg-primary-0 hover:scale-105 transition-transform duration-300">
         <div className="w-[90%] h-[80%] p-2 bg-white container mx-auto rounded-lg shadow-2xl mb-2">
           <img
             src={product.image || '/fallback-image.jpg'}

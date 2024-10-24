@@ -24,8 +24,11 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="products" element={<Products />} />
-              <Route path="products/:id" element={<SingleProduct />} />
-              {/* <Route path="products/:category" element={<Products />} /> */}
+              <Route path="products/:category" element={<Products />} />
+              <Route
+                path="products/:category/:id"
+                element={<SingleProduct />}
+              />
               <Route path="checkout/cart" element={<Cart />} />
               <Route path="/auth" element={<Auth />} />
               <Route path="/profile" element={<Profile />} />

@@ -1,9 +1,9 @@
 import React from 'react'
 import Empty from '../ui/Empty'
 import Loader from '../ui/Loader'
-import Product from './Product'
 import useProducts from './useProducts'
 import { useParams } from 'react-router-dom'
+import ProductCard from './ProductCard'
 
 const ProductsContainer: React.FC = () => {
   const { isProductsLoading, products } = useProducts()
@@ -20,7 +20,7 @@ const ProductsContainer: React.FC = () => {
     <div className="container p-5 flex flex-col">
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {filteredProducts?.map((product) => (
-          <Product key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
     </div>

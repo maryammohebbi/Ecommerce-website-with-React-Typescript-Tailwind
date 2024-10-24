@@ -51,9 +51,11 @@ const Category: React.FC<Categories> = ({ categories }) => {
     <div className="flex justify-around px-8 h-[186px] items-center border-secondary-100">
       {categories.map((category) => (
         <Link to={`/products/${category}`} key={category}>
-          <div className="lg:w-[7rem] w-[5rem] h-[5rem] lg:h-[7rem]   relative flex flex-col items-center">
+          <div className="lg:w-[7rem] w-[5rem] h-[5rem] lg:h-[7rem] relative flex flex-col items-center">
             {findAndRenderIcon(category)}
-            <span className=" text-textColor text-[14px] whitespace-nowrap hidden md:block">{category}</span>
+            <span className=" text-textColor text-[14px] whitespace-nowrap hidden md:block">
+              {category}
+            </span>
           </div>
         </Link>
       ))}
