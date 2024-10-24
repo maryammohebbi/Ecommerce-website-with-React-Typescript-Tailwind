@@ -30,7 +30,7 @@ const VerticalNav: React.FC<Props> = () => {
           <DarkModeToggle rotate=" rotate-180" />
         </div>
       </Fade>
-      <Fade direction="right" >
+      <Fade direction="right">
         {' '}
         <div className="vertical-nav">
           <CartIcon rotate="rotate-180" />

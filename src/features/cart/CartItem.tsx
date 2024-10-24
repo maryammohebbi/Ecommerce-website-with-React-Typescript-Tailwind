@@ -3,6 +3,7 @@ import { GoTrash } from 'react-icons/go'
 import { Link } from 'react-router-dom'
 import useProducts from '../products/useProducts'
 import { Tooltip } from '@mui/material'
+import { useCartNumber } from '../../context/CartNumberContext' // Import context
 
 interface CartProduct {
   product: {
@@ -21,29 +22,37 @@ const CartItem: React.FC<CartProduct> = ({
   onDelete,
 }) => {
   const { products } = useProducts()
+  const { setCartNumber } = useCartNumber() // Use context to update cart number
 
   const cartProduct = products?.find((p) => p.id === product.productId)
 
-  // const [prodQuantity, setProdQuantity] = useState(product.quantity)
-
-  // const incrementQuantity = () => {
-  //   setProdQuantity((prevQuantity) => prevQuantity + 1)
-  // }
-
-  // const decrementQuantity = () => {
-  //   setProdQuantity((prevQuantity) =>
-  //     prevQuantity > 1 ? prevQuantity - 1 : prevQuantity
-  //   )
-  // }
-
   const incrementQuantity = () => {
-    onQuantityChange(product.productId, quantity + 1)
+    const newQuantity = quantity + 1
+    onQuantityChange(product.productId, newQuantity)
+
+    // After updating the quantity, update the total cart number in the context
+    updateCartNumber(1) // Add 1 to the cart number
   }
 
   const decrementQuantity = () => {
     if (quantity > 1) {
-      onQuantityChange(product.productId, quantity - 1)
+      const newQuantity = quantity - 1
+      onQuantityChange(product.productId, newQuantity)
+
+      // After updating the quantity, update the total cart number in the context
+      updateCartNumber(-1) // Subtract 1 from the cart number
     }
+  }
+
+  // Function to update the cart number in context
+  const updateCartNumber = (quantityChange: number) => {
+    setCartNumber((prevCartNumber) => prevCartNumber + quantityChange)
+  }
+
+  const handleDelete = () => {
+    // Update the cart number by subtracting the current item's quantity before deletion
+    updateCartNumber(-quantity) // Subtract the current item's quantity
+    onDelete(product.productId)
   }
 
   return (
@@ -89,7 +98,7 @@ const CartItem: React.FC<CartProduct> = ({
         </div>
         <Tooltip title="Delete product" placement="top" arrow>
           <button
-            onClick={() => onDelete(product.productId)}
+            onClick={handleDelete} // Call handleDelete here
             className="w-full md:w-[14%] flex justify-center"
           >
             <GoTrash className="w-7 h-7 text-error" />

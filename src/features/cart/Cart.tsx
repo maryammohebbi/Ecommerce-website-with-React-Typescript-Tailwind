@@ -5,8 +5,9 @@ import { TbNumber } from 'react-icons/tb'
 import useProducts from '../products/useProducts'
 import { Tooltip } from '@mui/material'
 import Empty from '../ui/Empty'
+import { useCartNumber } from '../../context/CartNumberContext'
 
-interface Cart {
+export interface CartProps {
   cart: {
     id: number
     userId: number
@@ -25,37 +26,64 @@ interface Cart {
   ) => void
 }
 
-const Cart: React.FC<Cart> = ({ cart, cartNo, onDelete, onUpdateProducts }) => {
-  // const { products: cartProducts } = cart
+const Cart: React.FC<CartProps> = ({
+  cart,
+  cartNo,
+  onDelete,
+  onUpdateProducts,
+}) => {
   const { products: productList } = useProducts()
+  const { setCartNumber } = useCartNumber()
   const [cartProducts, setCartProducts] = useState(cart.products)
+  const [quantities, setQuantities] = useState<{ [key: number]: number }>({})
 
+  // Initialize quantities on mount and when cartProducts change
   useEffect(() => {
-    setCartProducts(cart.products)
-  }, [cart.products])
-
-  useEffect(() => {
-    onUpdateProducts(cart.id, cartProducts)
-  }, [cartProducts, cart.id, onUpdateProducts])
-
-  const [quantities, setQuantities] = useState(
-    cartProducts.reduce((acc, product) => {
+    const initialQuantities = cartProducts.reduce((acc, product) => {
       acc[product.productId] = product.quantity
       return acc
     }, {} as { [key: number]: number })
-  )
+    setQuantities(initialQuantities)
+  }, [cartProducts])
+
+  // Update the cart number and products on change
+  useEffect(() => {
+    const totalItems = cartProducts.reduce(
+      (total, product) => total + product.quantity,
+      0
+    )
+    setCartNumber(totalItems)
+    onUpdateProducts(cart.id, cartProducts)
+  }, [cartProducts, cart.id, onUpdateProducts, setCartNumber])
 
   const handleQuantityChange = (productId: number, newQuantity: number) => {
+    // Update quantities and cartProducts when quantity changes
+    if (newQuantity < 0) return // Prevent negative quantities
+
     setQuantities((prevQuantities) => ({
       ...prevQuantities,
       [productId]: newQuantity,
     }))
+
+    setCartProducts((prevProducts) =>
+      prevProducts.map((product) =>
+        product.productId === productId
+          ? { ...product, quantity: newQuantity }
+          : product
+      )
+    )
   }
 
   const handleDeleteProduct = (productId: number) => {
     setCartProducts((prevProducts) =>
       prevProducts.filter((product) => product.productId !== productId)
     )
+  }
+
+  const handleDeleteCart = () => {
+    // This function handles deleting the entire cart and updating the cart number
+    onDelete(cart.id)
+    setCartNumber(0) // Set cart number to 0 since the cart is deleted
   }
 
   const totalPrice = cartProducts.reduce((acc, product) => {
@@ -65,8 +93,6 @@ const Cart: React.FC<Cart> = ({ cart, cartNo, onDelete, onUpdateProducts }) => {
     )
   }, 0)
 
-  // if (cartProducts.length === 0) return <Empty sourceName="product" />
-
   return (
     <div className="mb-8">
       <div className="flex justify-between mb-2">
@@ -74,7 +100,7 @@ const Cart: React.FC<Cart> = ({ cart, cartNo, onDelete, onUpdateProducts }) => {
           Cart <TbNumber className="w-5 h-5" /> : {cartNo}
         </span>
         <Tooltip title="Delete cart" placement="top" arrow>
-          <button onClick={() => onDelete(cart.id)}>
+          <button onClick={handleDeleteCart}>
             <AiTwotoneCloseSquare className="w-8 h-8" />
           </button>
         </Tooltip>

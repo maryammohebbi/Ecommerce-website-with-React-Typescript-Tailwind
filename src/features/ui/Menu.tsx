@@ -19,16 +19,20 @@ const Menu: React.FC<Props> = ({}) => {
         </div>
 
         <div>
-          <h1 className=" text-sm text-secondary-100 md:menu-font">search</h1>
+          <input
+            className="border-2 rounded-xl p-3"
+            type="text"
+            placeholder="Search..."
+          />
         </div>
         <Tooltip title="Theme" placement="bottom" arrow>
           <div>
-            <DarkModeToggle rotate='rotate-0' />
+            <DarkModeToggle rotate="rotate-0" />
           </div>
         </Tooltip>
         <Tooltip title="Cart" placement="bottom" arrow>
           <div>
-            <CartIcon  rotate='rotate-0'/>
+            <CartIcon rotate="rotate-0" />
           </div>
         </Tooltip>
         <div className="sm:btn btn-primary rounded-[7px] ">

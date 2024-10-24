@@ -1,18 +1,16 @@
-import React, { useState, useCallback, useEffect, useMemo } from 'react'
-import Cart from './Cart'
+import React, { useState, useCallback, useEffect } from 'react'
 import useUser from '../../authentication/useUser'
 import useCarts from './useCarts'
 import Loader from '../ui/Loader'
 import Empty from '../ui/Empty'
-import { useCartNumber } from '../../context/CartNumberContext'
 import toast from 'react-hot-toast'
+import Cart, { CartProps } from './Cart'
 
 const CartContainer: React.FC = () => {
   const user = useUser()
   const { carts, isCartsLoading } = useCarts()
-  const { setCartNumber } = useCartNumber()
 
-  const [userCarts, setUserCarts] = useState<Cart['cart'][]>([])
+  const [userCarts, setUserCarts] = useState<CartProps['cart'][]>([])
 
   const getUserCarts = useCallback(() => {
     if (carts && user) {
@@ -24,14 +22,6 @@ const CartContainer: React.FC = () => {
   useEffect(() => {
     getUserCarts()
   }, [getUserCarts])
-
-  const cartNumber = useMemo(() => {
-    return userCarts.reduce((acc, curr) => acc + curr.products.length, 0)
-  }, [userCarts])
-
-  useEffect(() => {
-    setCartNumber(cartNumber)
-  }, [cartNumber, setCartNumber])
 
   const handleDeleteCart = useCallback((cartId: number) => {
     setUserCarts((prevCarts) => prevCarts.filter((cart) => cart.id !== cartId))
