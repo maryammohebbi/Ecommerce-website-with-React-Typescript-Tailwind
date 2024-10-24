@@ -1,16 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import useSingleProduct from './useSingleProduct'
 import Loader from '../ui/Loader'
 import Empty from '../ui/Empty'
 import truncateText from '../../utils/textSlicer'
-// import { useCartNumber } from '../../context/CartNumberContext'
+import { useCartNumber } from '../../context/CartNumberContext'
+import toast from 'react-hot-toast'
 
 const SingleProduct: React.FC = () => {
   const { isSingleProductLoading, product } = useSingleProduct()
-  // const { setCartNumber } = useCartNumber()
+  const { setCartNumber } = useCartNumber()
+
+  const [isAddedToCart, setIsAddedToCart] = useState(false)
 
   const cartAddNumber = () => {
-    // setCartNumber((prev) => prev + 1)
+    setCartNumber((prev) => prev + 1)
+    toast.success('Product added to cart!')
+    setIsAddedToCart(true)
   }
 
   if (isSingleProductLoading) return <Loader />
@@ -20,7 +25,7 @@ const SingleProduct: React.FC = () => {
     <div className="container p-5">
       <div className="flex flex-col">
         <div className="w-full h-[80%] flex flex-col lg:flex-row gap-y-4 lg:gap-x-4 p-4">
-          <div className="lg:w-2/5 lg:h-[36rem] bg-primary-200 border-2 border-primary rounded-lg   shadow-lg p-8 ">
+          <div className="lg:w-2/5 lg:h-[36rem] bg-white border-2 border-primary rounded-lg   shadow-lg p-8 ">
             <img
               className="w-full h-full object-scale-down rounded-lg"
               src={product.image}
@@ -65,9 +70,12 @@ const SingleProduct: React.FC = () => {
             <div className="flex flex-col items-end">
               <button
                 onClick={cartAddNumber}
-                className="btn text-secondary-0 my-8"
+                disabled={isAddedToCart}
+                className={`${
+                  isAddedToCart && 'opacity-60 '
+                } btn text-secondary-0 my-8`}
               >
-                Add To Cart
+                {isAddedToCart ? 'Already In Cart' : 'Add To Cart'}
               </button>
             </div>
           </div>
