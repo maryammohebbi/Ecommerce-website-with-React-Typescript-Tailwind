@@ -1,14 +1,17 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom'
 import ProductsContainer from '../features/products/ProductsContainer'
 import Title from '../features/ui/Title'
 
-type Props = {}
+const Products: React.FC = () => {
+  const location = useLocation()
+  const searchParams = new URLSearchParams(location.search)
+  const searchTerm = searchParams.get('search') || ''
 
-const Products: React.FC<Props> = ({}) => {
   return (
     <div>
       <Title title="Products" />
-      <ProductsContainer />
+      <ProductsContainer searchTerm={searchTerm} />
     </div>
   )
 }
