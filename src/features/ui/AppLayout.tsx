@@ -11,7 +11,7 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { scrollBoolean } = useScroll(100)
   const { setCartNumber } = useCartNumber() // Accessing the setter for cart number
   const { carts } = useCarts() // Assuming useCarts fetches the cart data
-  const [user] = useUser() // Assuming useUser gets the current user data
+  const user = useUser() // Assuming useUser gets the current user data
 
   // Effect to update cart number when cart items change
   useEffect(() => {

@@ -1,28 +1,38 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { IoMdLogIn } from 'react-icons/io'
-import useUser from '../../authentication/useUser'
 import { IoIosLogOut } from 'react-icons/io'
 import toast from 'react-hot-toast'
 import { CgProfile } from 'react-icons/cg'
+import useUser from '../../authentication/useUser' // Assuming this uses React Query
 
-const LoginIcon: React.FC = ({}) => {
-  const [user, setUser] = useUser()
+interface LoginIconProps {
+  isLoggedIn: boolean
+  onLogout: () => void
+}
+
+const LoginIcon: React.FC<LoginIconProps> = ({ isLoggedIn, onLogout }) => {
+  const user = useUser() // Fetch user data using your existing hook
   const navigate = useNavigate()
 
   const handleLogout = () => {
-    setUser(null)
-    navigate('/')
+    // Remove user token and ID from localStorage
+    localStorage.removeItem('userToken')
+    localStorage.removeItem('userId')
+
+    // Trigger logout-related UI updates
+    onLogout() // Call the passed in logout function
     toast(`See you next time, ${user?.name.firstname} 👋`)
+    navigate('/')
   }
 
   return (
     <div>
-      {user ? (
+      {isLoggedIn ? (
         <div className="relative group">
           <span className="cursor-pointer flex items-center gap-x-1 text-secondary-0 text-[10px] sm:text-[15px] transition-all md:text-[20px]">
             <CgProfile className="w-5 h-5 text-secondary-0 " /> Hi,{' '}
-            {user.name.firstname} !
+            {user?.name.firstname} !
           </span>
           <div
             className="opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-500 

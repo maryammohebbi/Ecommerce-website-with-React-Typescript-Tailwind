@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Tooltip } from '@mui/material'
 import LogoTheme from '../ui/LogoTheme'
@@ -6,17 +6,40 @@ import DarkModeToggle from './DarkModeToggle'
 import CartIcon from './CartIcon'
 import LoginIcon from './LoginIcon'
 import { FiSearch } from 'react-icons/fi'
+import useUser from '../../authentication/useUser' // Assuming this uses React Query
+import { useCartNumber } from '../../context/CartNumberContext'
+import useCarts from '../cart/useCarts' // Import your cart logic
 
 const Menu: React.FC = () => {
-  const [searchTerm, setSearchTerm] = useState('')
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const user = useUser() // Get user data
+  const { setCartNumber } = useCartNumber() // Accessing the setter for cart number
+  const { carts } = useCarts() // Fetch cart data
   const navigate = useNavigate()
 
-  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (searchTerm) {
-      // Redirect to the products page with the search query
-      navigate(`/products?search=${encodeURIComponent(searchTerm)}`)
+  useEffect(() => {
+    // Update logged in state based on user data
+    setIsLoggedIn(!!user)
+
+    // Update cart number based on user carts
+    if (user && carts) {
+      const userCart = carts.find((cart) => cart.userId === user?.id)
+      const totalItems = userCart
+        ? userCart.products.reduce((acc, product) => acc + product.quantity, 0)
+        : 0
+
+      setCartNumber(totalItems)
+    } else {
+      // Reset cart number when user logs out
+      setCartNumber(0)
     }
+  }, [user, carts, setCartNumber])
+
+  const handleLogout = () => {
+    // Clear user state
+    setIsLoggedIn(false)
+    // Reset cart number if needed
+    setCartNumber(0)
   }
 
   return (
@@ -30,15 +53,15 @@ const Menu: React.FC = () => {
         </div>
 
         <form
-          onSubmit={handleSearchSubmit}
           className="flex gap-x-2 relative items-center"
+          onSubmit={(e) => {
+            e.preventDefault() /* handle search */
+          }}
         >
           <input
-            className="border-2 rounded-xl p-3 "
+            className="border-2 rounded-xl p-3"
             type="text"
             placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button type="submit" className="absolute right-2">
             <FiSearch className="w-7 h-7 " />
@@ -56,7 +79,7 @@ const Menu: React.FC = () => {
           </div>
         </Tooltip>
         <div className="sm:btn btn-primary rounded-[7px] ">
-          <LoginIcon />
+          <LoginIcon isLoggedIn={isLoggedIn} onLogout={handleLogout} />
         </div>
       </div>
     </div>
