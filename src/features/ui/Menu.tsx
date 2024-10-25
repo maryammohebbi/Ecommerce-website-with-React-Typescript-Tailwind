@@ -15,6 +15,16 @@ const Menu: React.FC = () => {
   const user = useUser()
   const { setCartNumber } = useCartNumber()
   const { carts } = useCarts()
+  const [searchTerm, setSearchTerm] = useState('')
+  const navigate = useNavigate()
+
+  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    if (searchTerm) {
+      // Redirect to the products page with the search query
+      navigate(`/products?search=${encodeURIComponent(searchTerm)}`)
+    }
+  }
 
   useEffect(() => {
     // Update logged in state based on user data
@@ -53,14 +63,14 @@ const Menu: React.FC = () => {
 
         <form
           className="flex gap-x-2 relative items-center"
-          onSubmit={(e) => {
-            e.preventDefault() /* handle search */
-          }}
+          onSubmit={handleSearchSubmit}
         >
           <input
             className="border-2 rounded-xl p-3"
             type="text"
             placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
           <button type="submit" className="absolute right-2">
             <FiSearch className="w-7 h-7 " />
