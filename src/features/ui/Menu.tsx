@@ -6,16 +6,15 @@ import DarkModeToggle from './DarkModeToggle'
 import CartIcon from './CartIcon'
 import LoginIcon from './LoginIcon'
 import { FiSearch } from 'react-icons/fi'
-import useUser from '../../authentication/useUser' // Assuming this uses React Query
+import useUser from '../../authentication/useUser'
 import { useCartNumber } from '../../context/CartNumberContext'
-import useCarts from '../cart/useCarts' // Import your cart logic
+import useCarts from '../cart/useCarts'
 
 const Menu: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const user = useUser() // Get user data
-  const { setCartNumber } = useCartNumber() // Accessing the setter for cart number
-  const { carts } = useCarts() // Fetch cart data
-  const navigate = useNavigate()
+  const user = useUser()
+  const { setCartNumber } = useCartNumber()
+  const { carts } = useCarts()
 
   useEffect(() => {
     // Update logged in state based on user data

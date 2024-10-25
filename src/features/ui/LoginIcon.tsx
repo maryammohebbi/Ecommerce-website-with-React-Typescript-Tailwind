@@ -4,7 +4,7 @@ import { IoMdLogIn } from 'react-icons/io'
 import { IoIosLogOut } from 'react-icons/io'
 import toast from 'react-hot-toast'
 import { CgProfile } from 'react-icons/cg'
-import useUser from '../../authentication/useUser' // Assuming this uses React Query
+import useUser from '../../authentication/useUser'
 
 interface LoginIconProps {
   isLoggedIn: boolean
@@ -12,16 +12,15 @@ interface LoginIconProps {
 }
 
 const LoginIcon: React.FC<LoginIconProps> = ({ isLoggedIn, onLogout }) => {
-  const user = useUser() // Fetch user data using your existing hook
+  const user = useUser()
   const navigate = useNavigate()
 
   const handleLogout = () => {
-    // Remove user token and ID from localStorage
     localStorage.removeItem('userToken')
     localStorage.removeItem('userId')
 
     // Trigger logout-related UI updates
-    onLogout() // Call the passed in logout function
+    onLogout()
     toast(`See you next time, ${user?.name.firstname} 👋`)
     navigate('/')
   }
