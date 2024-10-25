@@ -7,8 +7,15 @@ import toast from 'react-hot-toast'
 import { CgProfile } from 'react-icons/cg'
 
 const LoginIcon: React.FC = ({}) => {
-  const user = useUser()
+  const [user, setUser] = useUser()
   const navigate = useNavigate()
+
+  const handleLogout = () => {
+    setUser(null)
+    navigate('/')
+    toast(`See you next time, ${user?.name.firstname} 👋`)
+  }
+
   return (
     <div>
       {user ? (
@@ -24,11 +31,7 @@ const LoginIcon: React.FC = ({}) => {
             <Link to="/profile">Your Profile</Link>
             <button
               className="flex items-center gap-x-1 hover:text-red-400 transition-all duration-500"
-              onClick={() => {
-                // setUser(null)
-                navigate('/')
-                toast(`See you next time, ${user.name.firstname} 👋`)
-              }}
+              onClick={handleLogout}
             >
               Logout <IoIosLogOut className="sm:w-5 sm:h-5 w-2 h-2 " />
             </button>
