@@ -15,6 +15,7 @@ export interface CartProps {
     products: {
       productId: number
       quantity: number
+      category: string
     }[]
     __v: number
   }
@@ -22,7 +23,7 @@ export interface CartProps {
   onDelete: (cartId: number) => void
   onUpdateProducts: (
     cartId: number,
-    updatedProducts: { productId: number; quantity: number }[]
+    updatedProducts: { productId: number; quantity: number; category: string }[]
   ) => void
 }
 

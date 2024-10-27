@@ -9,6 +9,7 @@ interface CartProduct {
   product: {
     productId: number
     quantity: number
+    category: string
   }
   quantity: number
   onQuantityChange: (productId: number, newQuantity: number) => void
@@ -54,12 +55,12 @@ const CartItem: React.FC<CartProduct> = ({
     updateCartNumber(-quantity) // Subtract the current item's quantity
     onDelete(product.productId)
   }
-
+  const categorySlug = product?.category?.toLowerCase()
   return (
     <div className="flex flex-col gap-y-4">
       <div className="flex flex-col gap-y-4 md:flex-row justify-center md:justify-between items-center p-4 border-2 border-slate-400 rounded-lg bg-slate-300 hover:bg-slate-400 transition-all duration-500 shadow-2xl">
         <div className="w-full md:w-[30%] h-[10rem] bg-white">
-          <Link to={`/products/${cartProduct?.id}`}>
+          <Link to={`/products/${categorySlug}/${product.productId}`}>
             <img
               src={cartProduct?.image}
               alt={cartProduct?.title}

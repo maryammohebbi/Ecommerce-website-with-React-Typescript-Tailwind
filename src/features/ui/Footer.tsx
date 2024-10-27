@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
     <footer className="bg-primary-100 mt-20 absolute left-0 right-0 h-auto lg:h-[17rem] ">
       <div className="container flex justify-between flex-wrap gap-2 w-full p-5">
         <div className="w-[15rem] h-auto">
-          <p className="font-bold text-secondary-0 border-b-2 text-center mb-8 p-2">
+          <p className="font-bold text-back border-b-2 text-center mb-8 p-2">
             Shopping Guide
           </p>
           <div className="flex flex-col gap-y-2 text-black font-bold">
@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className="w-[15rem] h-auto">
-          <p className="font-bold text-secondary-0 border-b-2 text-center mb-8 p-2">
+          <p className="font-bold text-back border-b-2 text-center mb-8 p-2">
             Customer Services
           </p>
           <div className="flex flex-col gap-y-2 text-black font-bold">
@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className="w-[15rem] h-auto">
-          <p className="font-bold text-secondary-0 border-b-2 text-center mb-8 p-2">
+          <p className="font-bold text-back border-b-2 text-center mb-8 p-2">
             Us!
           </p>
           <div className="flex flex-col gap-y-2 text-black font-bold">
@@ -37,7 +37,7 @@ const Footer: React.FC = () => {
           </div>
         </div>
         <div className="w-[15rem] h-auto">
-          <p className="font-bold text-secondary-0 border-b-2 text-center mb-8 p-2">
+          <p className="font-bold text-back border-b-2 text-center mb-8 p-2">
             Social Media
           </p>
           <div className="flex gap-x-2 text-black font-bold justify-between">

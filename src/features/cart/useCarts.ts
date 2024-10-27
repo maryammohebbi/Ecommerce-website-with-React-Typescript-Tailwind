@@ -11,6 +11,7 @@ export interface Cart {
         {
             productId: number
             quantity: number
+            category: string
         }
     ]
     __v: number

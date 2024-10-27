@@ -38,7 +38,7 @@ const SingleProduct: React.FC = () => {
                 <span className="text-textColor text-lg font-bold">
                   Title:{' '}
                 </span>
-                <span className="text-secondary text-lg font-semibold">
+                <span className="text-textColor text-lg font-semibold">
                   {truncateText(product.title, 20)}
                 </span>
               </div>
@@ -46,7 +46,7 @@ const SingleProduct: React.FC = () => {
                 <span className="text-textColor text-lg font-bold">
                   Price:{' '}
                 </span>
-                <span className="text-secondary text-lg font-semibold">
+                <span className="text-textColor text-lg font-semibold">
                   {product.price} $
                 </span>
               </div>
@@ -54,7 +54,7 @@ const SingleProduct: React.FC = () => {
                 <span className="text-textColor text-lg font-bold">
                   Description:
                 </span>
-                <span className="text-secondary text-lg font-semibold">
+                <span className="text-textColor text-lg font-semibold">
                   {truncateText(product.description, 60)}
                 </span>
               </div>
@@ -62,7 +62,7 @@ const SingleProduct: React.FC = () => {
                 <span className="text-textColor text-lg font-bold">
                   Category:
                 </span>
-                <span className="text-secondary text-lg font-semibold">
+                <span className="text-textColor text-lg font-semibold">
                   {product.category}
                 </span>
               </div>

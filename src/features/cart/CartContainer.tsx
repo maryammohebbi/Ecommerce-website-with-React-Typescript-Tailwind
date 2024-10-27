@@ -31,7 +31,11 @@ const CartContainer: React.FC = () => {
   const handleUpdateCartProducts = useCallback(
     (
       cartId: number,
-      updatedProducts: { productId: number; quantity: number }[]
+      updatedProducts: {
+        productId: number
+        quantity: number
+        category: string
+      }[]
     ) => {
       setUserCarts((prevCarts) =>
         prevCarts.map((cart) =>
