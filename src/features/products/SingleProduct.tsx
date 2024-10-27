@@ -35,19 +35,15 @@ const SingleProduct: React.FC = () => {
           <div className="lg:w-3/5 lg:h-[36rem] flex flex-col gap-y-4 border-2 border-primary rounded-lg shadow-2xl p-8">
             <div className="flex flex-col  gap-y-4 md:gap-20">
               <div>
-                <span className="text-textColor text-lg font-bold">
-                  Title:{' '}
-                </span>
+                <span className="text-textColor text-lg font-bold">Title:</span>
                 <span className="text-textColor text-lg font-semibold">
-                  {truncateText(product.title, 20)}
+                  &nbsp; {product.title}
                 </span>
               </div>
               <div>
-                <span className="text-textColor text-lg font-bold">
-                  Price:{' '}
-                </span>
+                <span className="text-textColor text-lg font-bold">Price:</span>
                 <span className="text-textColor text-lg font-semibold">
-                  {product.price} $
+                  &nbsp; {product.price} $
                 </span>
               </div>
               <div>
@@ -55,7 +51,7 @@ const SingleProduct: React.FC = () => {
                   Description:
                 </span>
                 <span className="text-textColor text-lg font-semibold">
-                  {truncateText(product.description, 60)}
+                  &nbsp; {truncateText(product.description, 60)}
                 </span>
               </div>
               <div>
@@ -63,7 +59,7 @@ const SingleProduct: React.FC = () => {
                   Category:
                 </span>
                 <span className="text-textColor text-lg font-semibold">
-                  {product.category}
+                  &nbsp; {product.category}
                 </span>
               </div>
             </div>
