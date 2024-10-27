@@ -9,7 +9,7 @@ interface ProductProps {
 }
 
 const ProductCard: React.FC<ProductProps> = ({ product }) => {
-  const categorySlug = product.category.toLowerCase() // Ensure the category matches the URL structure
+  const categorySlug = product.category.toLowerCase()
 
   return (
     <Link to={`/products/${categorySlug}/${product.id}`} onClick={scrollToTop}>
@@ -21,7 +21,7 @@ const ProductCard: React.FC<ProductProps> = ({ product }) => {
             className="w-full h-full object-scale-down"
           />
         </div>
-        <p className=" text-textColor text-center mb-2 font-bold text-md title-shadow">
+        <p className=" text-black text-center mb-2 font-bold text-md title-shadow">
           {truncateText(product.title ?? 'Untitled Product', 30)}
         </p>
         <div className="flex justify-between items-center px-4">
