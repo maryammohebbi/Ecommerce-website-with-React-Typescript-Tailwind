@@ -30,6 +30,7 @@
   :root {
     &,
     &.light-mode {
+      --background-app: #edfdfd;
       --color-primary: #c2c8da;
       --color-primary-100: #e6c744;
       --color-primary-200: rgb(87, 101, 116);
@@ -37,7 +38,7 @@
       --color-secondary-100: #000000;
       --color-secondary-200: #f4f6f5;
       --color-textColor: #0f1012;
-      --color-secondaryBg: #5f636a;
+      --color-secondaryBg: #6c707b;
 
       --color-success: #36bc4c;
       --color-warning: #ec5454;
@@ -46,19 +47,20 @@
     }
     /* &, */
     &.dark-mode {
+      --background-app: #04061f;
       --color-secondary: rgb(45, 52, 54);
       --color-secondary-100: #ffffff;
       --color-secondary-200: rgb(178, 190, 195);
       --color-primary: rgb(87, 101, 116);
       --color-textColor: #dae2f4;
-      --color-secondaryBg: #16190e;
+      --color-secondaryBg: #bcbcbd;
     }
   }
 }
 
 body {
   font-family: 'Poppins', sans-serif;
-  background-color: var(--color-secondary);
+  background-color: var(--background-app);
 }
 
 .btn-primary {
