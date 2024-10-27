@@ -1,11 +1,10 @@
-import vector from '../../../public/Vector.png'
-import fashion from '../../../public/FASHION.png'
+import { BiLogoOkRu } from 'react-icons/bi'
 
 function LogoTheme() {
   return (
-    <div className=" flex gap-x-[13px] items-center  ">
-      <img src={vector} className=":w-[31.26px] xl:h-[29px]" alt="image" />
-      <img src={fashion} className="w-[200px]  h-8 " alt="image" />
+    <div className=" flex items-center ">
+      <BiLogoOkRu className="w-9 h-9 text-textColor" />
+      <span className="font-bold text-4xl text-textColor">FASHION</span>
     </div>
   )
 }
