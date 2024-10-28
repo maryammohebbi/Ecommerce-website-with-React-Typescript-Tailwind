@@ -8,7 +8,7 @@ type Props = {
   image: string
   bannerColor: string
   order: string
-  borderColor:string
+  borderColor: string
 }
 
 const Banner: React.FC<Props> = ({
@@ -21,12 +21,12 @@ const Banner: React.FC<Props> = ({
 }) => {
   return (
     <div
-      className={`banner-base mt-8 ${bannerColor} shadow-lg shadow-secondary-100`}
+      className={`banner-base mt-8 ${bannerColor} shadow-lg shadow-secondary-100 container mx-auto`}
     >
       <div className={`flex flex-col justify-around py-8 ${order}`}>
         <div>
-          <picture className="h-full flex justify-between flex-col transition-all  ">
-            <div className="w-[280px] h-[85px]  bg-secondary-0 mb-[-76px] ml-[-10px] rotate-banner"></div>
+          <picture className="h-full flex justify-between flex-col transition-all ">
+            <div className="w-[280px] h-[85px]  bg-[#fd80db] mb-[-76px] ml-[-10px] rotate-banner"></div>
             <img src={banner} alt="image" className="z-[1000] object-cover" />
             <div className="w-[370px] h-[80px] bg-primary-100 border-primary-100 mt-[-168px] z-0 xl:mt-[-195px] mr-3 rotate-banner "></div>
           </picture>
@@ -36,7 +36,7 @@ const Banner: React.FC<Props> = ({
         </div>
         <Link to="/products ">
           <button
-            className={`text-secondary-0 btn font-bold shadow-md  ${borderColor} border-2 `}
+            className={`text-secondary-0 btn font-bold shadow-md ${borderColor} border-2 `}
             onClick={scrollToTop}
           >
             SHOP NOW
@@ -47,7 +47,7 @@ const Banner: React.FC<Props> = ({
       <img
         src={image}
         alt="image"
-        className="object-contain w-[566px]   mt-[92px]   "
+        className="object-contain w-[566px] mt-[92px] "
       />
     </div>
   )

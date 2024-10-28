@@ -83,7 +83,7 @@ const UpdateUser: React.FC<UpdateUserProps> = ({
         <>
           <div className="fixed top-0 left-0 w-full h-full bg-slate-600 opacity-50 z-10"></div>
           <div className="fixed inset-0 flex items-center justify-center z-20 ">
-            <div className="relative max-w-sm lg:max-w-xl w-full h-[80%] bg-secondaryBg p-4 rounded-md shadow-lg mt-10">
+            <div className="relative max-w-sm lg:max-w-xl w-full h-[80%] bg-teal-900 p-4 rounded-md shadow-lg mt-10">
               <button
                 onClick={() => onOpen(false)}
                 className="absolute -top-9 right-0 w-8 h-8 bg-slate-100 p-1 rounded-full text-black font-bold shadow-xl z-30"
@@ -95,7 +95,7 @@ const UpdateUser: React.FC<UpdateUserProps> = ({
                 onSubmit={handleSubmit(onSubmit)}
                 className="flex flex-col gap-y-1 h-full overflow-y-scroll p-2"
               >
-                <h3 className="font-bold text-slate-300 text-xl text-center border-b-2 border-gray-400 mb-7">
+                <h3 className="font-bold text-slate-900 text-xl text-center border-b-2 border-gray-400 mb-7">
                   - Update User -
                 </h3>
                 <InputField
@@ -149,7 +149,7 @@ const UpdateUser: React.FC<UpdateUserProps> = ({
                   }}
                 />
 
-                <div className="text-textColor flex gap-x-3 mb-4">
+                <div className="text-slate-200 flex gap-x-3 mb-4">
                   <span>Address:</span>
                   <div className="pl-5">
                     <InputField
@@ -195,7 +195,7 @@ const UpdateUser: React.FC<UpdateUserProps> = ({
                   </div>
                 </div>
                 <div className="flex justify-center">
-                  <button className="bg-green-600 rounded-lg shadow-2xl w-24 p-2 font-semibold border-2 border-green-700">
+                  <button className="bg-emerald-500 rounded-lg shadow-2xl w-24 p-2 font-semibold border-2 border-green-700">
                     Save
                   </button>
                 </div>

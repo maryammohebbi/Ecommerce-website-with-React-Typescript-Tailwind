@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 
 const Brands: React.FC = () => {
   return (
-    <div className="container mt-12 px-16">
+    <div className="container mx-auto mt-12 px-16">
       <img src={newArrivals} alt="" />
       <div className=" mt-9 flex flex-col lg:flex-row w-full justify-between gap-x-[70px] items-center gap-y-[90px]">
         {logos.map((logo) => (
@@ -23,7 +23,7 @@ const Brands: React.FC = () => {
                 <span className="text-primary-0">Explore Now!</span>
               </div>
               <Link to={'/products'}>
-                <HiArrowRight className='text-secondary-100' />
+                <HiArrowRight className="text-secondary-100" />
               </Link>
             </div>
           </div>
