@@ -1,30 +1,21 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Tooltip } from '@mui/material'
 import LogoTheme from '../ui/LogoTheme'
 import DarkModeToggle from './DarkModeToggle'
 import CartIcon from './CartIcon'
 import LoginIcon from './LoginIcon'
-import { FiSearch } from 'react-icons/fi'
+
 import useUser from '../../authentication/useUser'
 import { useCartNumber } from '../../context/CartNumberContext'
 import useCarts from '../cart/useCarts'
+import Search from './Search'
 
 const Menu: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const user = useUser()
   const { setCartNumber } = useCartNumber()
   const { carts } = useCarts()
-  const [searchTerm, setSearchTerm] = useState('')
-  const navigate = useNavigate()
-
-  const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (searchTerm) {
-      // Redirect to the products page with the search query
-      navigate(`/products?search=${encodeURIComponent(searchTerm)}`)
-    }
-  }
 
   useEffect(() => {
     // Update logged in state based on user data
@@ -61,21 +52,7 @@ const Menu: React.FC = () => {
           </Link>
         </div>
 
-        <form
-          className="flex gap-x-2 relative items-center"
-          onSubmit={handleSearchSubmit}
-        >
-          <input
-            className="border-2 rounded-xl p-3"
-            type="text"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <button type="submit" className="absolute right-2">
-            <FiSearch className="w-7 h-7 " />
-          </button>
-        </form>
+        <Search />
 
         <Tooltip title="Theme" placement="bottom" arrow>
           <div>
@@ -87,7 +64,7 @@ const Menu: React.FC = () => {
             <CartIcon rotate="rotate-0" />
           </div>
         </Tooltip>
-        <div className="sm:btn btn-primary rounded-[7px] ">
+        <div className="">
           <LoginIcon isLoggedIn={isLoggedIn} onLogout={handleLogout} />
         </div>
       </div>
