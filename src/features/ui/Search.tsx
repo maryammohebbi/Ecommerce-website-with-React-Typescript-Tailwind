@@ -27,7 +27,7 @@ const Search: React.FC = () => {
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <button type="submit" className="absolute right-2">
-        <FiSearch className="w-7 h-7 text-textColor" />
+        <FiSearch className="w-7 h-7 text-black" />
       </button>
     </form>
   )

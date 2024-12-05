@@ -44,7 +44,7 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <div
           className={`${
             open ? 'fixed' : 'hidden'
-          } lg:hidden z-50 bg-sideBg w-[19rem] h-screen top-0 left-0 p-2 border-2 border-primary-0`}
+          } lg:hidden z-50 bg-sideBg w-[19rem] h-screen top-0 left-0 p-5 border-2 border-primary-0 `}
         >
           <div className="flex justify-end">
             <button
