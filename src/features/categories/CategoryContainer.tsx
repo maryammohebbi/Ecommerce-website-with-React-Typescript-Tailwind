@@ -10,7 +10,7 @@ const CategoryContainer: React.FC = () => {
   if (!categories) return <Empty sourceName="category" />
 
   return (
-    <div className="w-full container mx-auto">
+    <div className="w-full h-full">
       <Category categories={categories} />
     </div>
   )

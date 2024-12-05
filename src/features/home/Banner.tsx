@@ -21,13 +21,13 @@ const Banner: React.FC<Props> = ({
 }) => {
   return (
     <div
-      className={`banner-base mt-8 ${bannerColor} shadow-lg shadow-secondary-100 container mx-auto`}
+      className={`banner-base mt-8 ${bannerColor} shadow-lg shadow-secondary-100 container mx-auto mb-10`}
     >
       <div className={`flex flex-col justify-around py-8 ${order}`}>
         <div>
           <picture className="h-full flex justify-between flex-col transition-all ">
             <div className="w-[280px] h-[85px]  bg-[#fd80db] mb-[-76px] ml-[-10px] rotate-banner"></div>
-            <img src={banner} alt="image" className="z-[1000] object-cover" />
+            <img src={banner} alt="image" className="z-10 object-cover" />
             <div className="w-[370px] h-[80px] bg-primary-100 border-primary-100 mt-[-168px] z-0 xl:mt-[-195px] mr-3 rotate-banner "></div>
           </picture>
         </div>

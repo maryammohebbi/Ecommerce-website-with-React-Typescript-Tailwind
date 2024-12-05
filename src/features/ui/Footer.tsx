@@ -7,7 +7,7 @@ import { PiTelegramLogoLight } from 'react-icons/pi'
 const Footer: React.FC = () => {
   return (
     <footer className="bg-primary-100 mt-20 absolute left-0 right-0 h-auto lg:h-[17rem] ">
-      <div className="container flex justify-between flex-wrap gap-2 w-full p-5">
+      <div className="container flex justify-between flex-wrap gap-5 w-full p-5">
         <div className="w-[15rem] h-auto">
           <p className="font-bold text-back border-b-2 text-center mb-8 p-2">
             Shopping Guide

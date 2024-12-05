@@ -43,7 +43,7 @@ const Menu: React.FC = () => {
   }
 
   return (
-    <div className="sticky top-0 left-0 right-0 bg-sideBg z-[70] w-full">
+    <div className="sticky top-0 left-0 right-0 bg-sideBg w-full z-20">
       <div className="container mx-auto hidden lg:flex flex-col gap-y-6 xl:flex-row justify-between w-full items-center md:px-24 md:py-8 p-8">
         <LogoTheme />
         <div className="flex xl:gap-x-[65px] md:gap-x-16 gap-x-8 items-center justify-between transition-all ">

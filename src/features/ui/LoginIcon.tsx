@@ -32,7 +32,7 @@ const LoginIcon: React.FC<LoginIconProps> = ({ isLoggedIn, onLogout }) => {
   }
 
   return (
-    <div>
+    <div className="">
       {isLoggedIn ? (
         <Dropdown>
           <MenuButton className=" sm:btn btn-primary rounded-[7px] text-secondary-0">
@@ -111,7 +111,7 @@ const Listbox = styled('ul')(
   box-shadow: 0px 4px 30px ${
     theme.palette.mode === 'dark' ? grey[900] : grey[200]
   };
-  z-index: 1;
+  z-index: 30;
 
   .closed & {
     opacity: 0;
@@ -168,6 +168,7 @@ const MenuItem = styled(BaseMenuItem)(
   border-radius: 8px;
   cursor: default;
   user-select: none;
+  
 
   &:last-of-type {
     border-bottom: none;

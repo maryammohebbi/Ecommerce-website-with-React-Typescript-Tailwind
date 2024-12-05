@@ -3,7 +3,7 @@ import CategoryContainer from '../categories/CategoryContainer'
 
 const Categories: React.FC = () => {
   return (
-    <div className="container mx-auto my-12 w-full bg-primary-100 flex flex-col items-center justify-between h-[186px]  ">
+    <div className="container mx-auto w-full bg-primary-100 h-auto mb-10 ">
       <CategoryContainer />
     </div>
   )

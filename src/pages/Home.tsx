@@ -6,6 +6,7 @@ import letsExplore from '../../public/LET’S EXPLORE UNIQUE CLOTHES..png'
 import daghter from '../../public/daghter.png'
 import seconddaughter from '../../public/Subject.png'
 import payday from '../../public/PAYDAY SALE NOW.png'
+import AllProducts from '../features/home/AllProducts'
 
 type Props = {}
 
@@ -21,6 +22,7 @@ const Home: React.FC<Props> = ({}) => {
         description="Live for Influential and Innovative fashion!"
       />
       <Categories />
+      <AllProducts />
       <Brands />
       <Banner
         borderColor="border-seondary-0"

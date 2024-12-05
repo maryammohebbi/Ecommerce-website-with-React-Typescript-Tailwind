@@ -24,7 +24,7 @@ const SingleProduct: React.FC = () => {
   return (
     <div className="container p-5">
       <div className="flex flex-col">
-        <div className="w-full h-[80%] flex flex-col lg:flex-row gap-y-4 lg:gap-x-4 p-4">
+        <div className="w-full flex flex-col lg:flex-row gap-y-4 lg:gap-x-4 p-4">
           <div className="lg:w-2/5 lg:h-[36rem] bg-white border-2 border-primary rounded-lg shadow-lg p-8 ">
             <img
               className="w-full h-full object-scale-down rounded-lg"
