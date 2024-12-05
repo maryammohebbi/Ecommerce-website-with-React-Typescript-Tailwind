@@ -11,7 +11,7 @@ import { useCartNumber } from '../../context/CartNumberContext'
 import useCarts from '../cart/useCarts'
 import Search from './Search'
 
-const Menu: React.FC = () => {
+const MobileMenu: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
   const user = useUser()
   const { setCartNumber } = useCartNumber()
@@ -43,35 +43,33 @@ const Menu: React.FC = () => {
   }
 
   return (
-    <div className="sticky top-0 left-0 right-0 bg-sideBg z-[70] w-full">
-      <div className="container mx-auto hidden lg:flex flex-col gap-y-6 xl:flex-row justify-between w-full items-center md:px-24 md:py-8 p-8">
-        <LogoTheme />
-        <div className="flex xl:gap-x-[65px] md:gap-x-16 gap-x-8 items-center justify-between transition-all ">
+    <div className="flex flex-col justify-end gap-y-6">
+      <LogoTheme />
+      <div className="flex flex-col gap-y-8 transition-all">
+        <div>
+          <Link to="/" className="text-sm text-secondary-100 md:menu-font">
+            Home
+          </Link>
+        </div>
+
+        <Search />
+
+        <Tooltip title="Theme" placement="bottom" arrow>
           <div>
-            <Link to="/" className="text-sm text-secondary-100 md:menu-font">
-              Home
-            </Link>
+            <DarkModeToggle rotate="rotate-0" />
           </div>
-
-          <Search />
-
-          <Tooltip title="Theme" placement="bottom" arrow>
-            <div>
-              <DarkModeToggle rotate="rotate-0" />
-            </div>
-          </Tooltip>
-          <Tooltip title="Cart" placement="bottom" arrow>
-            <div>
-              <CartIcon rotate="rotate-0" />
-            </div>
-          </Tooltip>
-          <div className="">
-            <LoginIcon isLoggedIn={isLoggedIn} onLogout={handleLogout} />
+        </Tooltip>
+        <Tooltip title="Cart" placement="bottom" arrow>
+          <div>
+            <CartIcon rotate="rotate-0" />
           </div>
+        </Tooltip>
+        <div className="">
+          <LoginIcon isLoggedIn={isLoggedIn} onLogout={handleLogout} />
         </div>
       </div>
     </div>
   )
 }
 
-export default Menu
+export default MobileMenu

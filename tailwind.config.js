@@ -33,6 +33,7 @@ export default {
         // warning: withOpacity('--color-warning'),
         error: withOpacity('--color-error'),
         // bgMenu: withOpacity('--color-bgMenu'),
+        sideBg: withOpacity('--color-sideBg'),
       },
 
       container: {

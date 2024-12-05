@@ -20,14 +20,14 @@ const Search: React.FC = () => {
       onSubmit={handleSearchSubmit}
     >
       <input
-        className="border-2 rounded-xl p-3"
+        className="border-2 rounded-xl p-3 w-full"
         type="text"
         placeholder="Search..."
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
       />
       <button type="submit" className="absolute right-2">
-        <FiSearch className="w-7 h-7 " />
+        <FiSearch className="w-7 h-7 text-textColor" />
       </button>
     </form>
   )

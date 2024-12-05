@@ -39,7 +39,7 @@
       --color-secondary-200: #f4f6f5;
       --color-textColor: #0f1012;
       --color-secondaryBg: #6c707b;
-
+      --color-sideBg: #edfdfd;
       --color-success: #36bc4c;
       --color-warning: #ec5454;
       --color-error: #f92c2c;
@@ -48,6 +48,7 @@
     /* &, */
     &.dark-mode {
       --background-app: #04061f;
+      --color-sideBg: #04061f;
       --color-secondary: rgb(45, 52, 54);
       --color-secondary-100: #ffffff;
       --color-secondary-200: rgb(178, 190, 195);
