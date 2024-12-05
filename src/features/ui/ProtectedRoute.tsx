@@ -1,20 +1,25 @@
 import React, { useEffect } from 'react'
-import useUser from '../../authentication/useUser'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import useUser from '../../authentication/useUser'
 
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const user = useUser()
+  const { user, loading } = useUser() // Adjusted to use loading state
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (!user) {
-      toast.error('You need to login first.')
+    if (!loading && !user) {
+      toast.error('Please login first') // Show toast notification
       navigate('/auth')
     }
-  }, [user, navigate])
+  }, [user, loading, navigate])
+
+  // Show a loading spinner or nothing while loading
+  if (loading) {
+    return <div>Loading...</div> // Replace with a proper loading indicator if needed
+  }
 
   return user ? <>{children}</> : null
 }

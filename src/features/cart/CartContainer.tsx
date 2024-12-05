@@ -7,7 +7,7 @@ import Cart, { CartProps } from './Cart'
 import Loader from '../ui/Loader'
 
 const CartContainer: React.FC = () => {
-  const user = useUser()
+  const { user } = useUser()
   const { carts, isCartsLoading } = useCarts()
 
   const [userCarts, setUserCarts] = useState<CartProps['cart'][]>([])

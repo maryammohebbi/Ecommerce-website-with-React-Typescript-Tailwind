@@ -13,7 +13,7 @@ import Search from './Search'
 
 const Menu: React.FC = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false)
-  const user = useUser()
+  const { user } = useUser()
   const { setCartNumber } = useCartNumber()
   const { carts } = useCarts()
 

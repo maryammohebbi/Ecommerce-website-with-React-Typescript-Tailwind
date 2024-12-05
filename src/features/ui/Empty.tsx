@@ -7,7 +7,7 @@ interface SourceName {
 const Empty: React.FC<SourceName> = ({ sourceName }) => {
   return (
     <div className="container">
-      <p className="text-xl text-black font-bold">
+      <p className="text-xl text-textColor font-bold">
         There's no {sourceName} ...
       </p>
     </div>

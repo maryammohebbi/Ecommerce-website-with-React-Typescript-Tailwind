@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import UpdateUser from './UpdateUser'
 import { User } from '../services/authService'
-import useUser from '../../authentication/useUser'
 import useEditUser from './useEditUser'
+import useUser from '../../authentication/useUser'
 
 const Profile: React.FC = () => {
-  const user = useUser()
+  const { user } = useUser()
   const [open, setOpen] = useState(false)
   const { updateUser } = useEditUser()
   const [updatedUser, setUpdatedUser] = useState<User | null>(user)
