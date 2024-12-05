@@ -12,6 +12,7 @@ import { IoIosLogOut } from 'react-icons/io'
 import toast from 'react-hot-toast'
 import { CgProfile } from 'react-icons/cg'
 import useUser from '../../authentication/useUser'
+import zIndex from '@mui/material/styles/zIndex'
 
 interface LoginIconProps {
   isLoggedIn: boolean
@@ -41,7 +42,7 @@ const LoginIcon: React.FC<LoginIconProps> = ({ isLoggedIn, onLogout }) => {
               <span> Hi {user?.name.firstname} !</span>
             </div>
           </MenuButton>
-          <Menu slots={{ listbox: AnimatedListbox }}>
+          <Menu slots={{ listbox: AnimatedListbox }} className="z-[1000]">
             <Link to="/profile">
               <MenuItem>Your Profile</MenuItem>
             </Link>

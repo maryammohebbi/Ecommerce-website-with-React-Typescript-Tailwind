@@ -35,7 +35,7 @@ const AppLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   return (
     <div className="">
       <>
-        <div className="container p-5">
+        <div className="container mx-auto p-5">
           <button onClick={() => setOpen(true)} className="lg:hidden">
             <GiHamburgerMenu className="w-8 h-8 text-textColor" />
           </button>

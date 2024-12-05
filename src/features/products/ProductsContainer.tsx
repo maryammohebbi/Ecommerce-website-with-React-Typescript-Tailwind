@@ -29,8 +29,8 @@ const ProductsContainer: React.FC<ProductsContainerProps> = ({
     return <Empty sourceName="product" />
 
   return (
-    <div className="container p-5 flex flex-col">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 container mx-auto">
+    <div className="">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 justify-center">
         {searchedProducts.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

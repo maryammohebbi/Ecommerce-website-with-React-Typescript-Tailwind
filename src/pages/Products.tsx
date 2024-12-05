@@ -9,7 +9,7 @@ const Products: React.FC = () => {
   const searchTerm = searchParams.get('search') || ''
 
   return (
-    <div>
+    <div className="container mx-auto">
       <Title title="Products" />
       <ProductsContainer searchTerm={searchTerm} />
     </div>

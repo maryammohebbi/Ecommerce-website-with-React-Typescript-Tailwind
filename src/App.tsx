@@ -11,6 +11,7 @@ import Cart from './pages/Cart'
 import { CartNumberProvider } from './context/CartNumberContext'
 import Profile from './features/user/Profile'
 import NotFound404 from './features/ui/NotFound404'
+import ProtectedRoute from './features/ui/ProtectedRoute'
 
 const queryClient = new QueryClient()
 
@@ -31,7 +32,14 @@ function App() {
               />
               <Route path="checkout/cart" element={<Cart />} />
               <Route path="/auth" element={<Auth />} />
-              <Route path="/profile" element={<Profile />} />
+              <Route
+                path="/profile"
+                element={
+                  <ProtectedRoute>
+                    <Profile />
+                  </ProtectedRoute>
+                }
+              />
               <Route path="*" element={<NotFound404 />} />
             </Routes>
           </AppLayout>
