@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import useSingleProduct from './useSingleProduct'
-import Loader from '../ui/Loader'
 import Empty from '../ui/Empty'
 import truncateText from '../../utils/textSlicer'
 import { useCartNumber } from '../../context/CartNumberContext'
 import toast from 'react-hot-toast'
+import Loader from '../ui/Loader'
 
 const SingleProduct: React.FC = () => {
   const { isSingleProductLoading, product } = useSingleProduct()

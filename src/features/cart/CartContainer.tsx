@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useEffect } from 'react'
 import useUser from '../../authentication/useUser'
 import useCarts from './useCarts'
-import Loader from '../ui/Loader'
 import Empty from '../ui/Empty'
 import toast from 'react-hot-toast'
 import Cart, { CartProps } from './Cart'
+import Loader from '../ui/Loader'
 
 const CartContainer: React.FC = () => {
   const user = useUser()

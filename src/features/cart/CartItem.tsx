@@ -3,7 +3,7 @@ import { GoTrash } from 'react-icons/go'
 import { Link } from 'react-router-dom'
 import useProducts from '../products/useProducts'
 import { Tooltip } from '@mui/material'
-import { useCartNumber } from '../../context/CartNumberContext' // Import context
+import { useCartNumber } from '../../context/CartNumberContext'
 
 interface CartProduct {
   product: {
@@ -55,12 +55,11 @@ const CartItem: React.FC<CartProduct> = ({
     updateCartNumber(-quantity) // Subtract the current item's quantity
     onDelete(product.productId)
   }
-  const categorySlug = product?.category?.toLowerCase()
   return (
     <div className="flex flex-col gap-y-4">
       <div className="flex flex-col gap-y-4 md:flex-row justify-center md:justify-between items-center p-4 border-2 border-slate-400 rounded-lg bg-slate-300 hover:bg-slate-400 transition-all duration-500 shadow-2xl">
         <div className="w-full md:w-[30%] h-[10rem] bg-white">
-          <Link to={`/products/${categorySlug}/${product.productId}`}>
+          <Link to={`/products/${cartProduct?.category}/${product.productId}`}>
             <img
               src={cartProduct?.image}
               alt={cartProduct?.title}

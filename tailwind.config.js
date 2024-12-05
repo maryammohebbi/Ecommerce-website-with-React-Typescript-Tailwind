@@ -31,7 +31,7 @@ export default {
         secondaryBg: withOpacity('--color-secondaryBg'),
         // success: withOpacity('--color-success'),
         // warning: withOpacity('--color-warning'),
-        // error: withOpacity('--color-error'),
+        error: withOpacity('--color-error'),
         // bgMenu: withOpacity('--color-bgMenu'),
       },
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import Empty from '../ui/Empty'
-import Loader from '../ui/Loader'
 import useProducts from './useProducts'
 import { useParams } from 'react-router-dom'
 import ProductCard from './ProductCard'
+import LoaderProducts from '../ui/LoaderProducts'
 
 interface ProductsContainerProps {
   searchTerm: string
@@ -24,7 +24,7 @@ const ProductsContainer: React.FC<ProductsContainerProps> = ({
     product.title.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
-  if (isProductsLoading) return <Loader />
+  if (isProductsLoading) return <LoaderProducts />
   if (!searchedProducts || searchedProducts.length === 0)
     return <Empty sourceName="product" />
 
